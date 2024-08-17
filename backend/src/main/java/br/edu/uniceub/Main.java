@@ -1,4 +1,4 @@
-package com.example;
+package br.edu.uniceub;
 
 public class Main {
     public static void main(String[] args) {
