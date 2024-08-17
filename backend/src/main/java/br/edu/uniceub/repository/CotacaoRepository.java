@@ -1,5 +1,5 @@
 package br.edu.uniceub.repository;
 
-public class CotacaoResource {
+public class CotacaoRepository {
     
 }

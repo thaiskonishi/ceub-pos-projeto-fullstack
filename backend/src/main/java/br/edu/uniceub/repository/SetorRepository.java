@@ -1,5 +1,5 @@
 package br.edu.uniceub.repository;
 
-public class SetorResource {
+public class SetorRepository {
     
 }
