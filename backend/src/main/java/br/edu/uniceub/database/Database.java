@@ -1,4 +1,4 @@
-package main.java.br.edu.uniceub.database;
+package br.edu.uniceub.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,12 +8,12 @@ public class Database {
 
     public static void main(String[] args) {
         // URL do banco de dados H2 (em memória)
-        String jdbcUrl = "jdbc:h2:mem:testdb";
+        String jdbcUrl = "jdbc:h2:mem:banco";
         String username = "sa";
         String password = "password";
 
 //        String jdbcUrl = "jdbc:h2:file:./data/testdb";
-
+       
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
              Statement statement = connection.createStatement()) {
