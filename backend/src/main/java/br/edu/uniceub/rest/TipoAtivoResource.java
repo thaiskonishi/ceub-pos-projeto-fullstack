@@ -32,7 +32,7 @@ public class TipoAtivoResource {
     })
     public Response getTipoAtivo(@PathParam("id") Long id) {
         Optional<TipoAtivo> tipoAtivo = tipoAtivoService.getTipoAtivo(id);
-        if (TipoAtivo.isPresent()) {
+        if (tipoAtivo.isPresent()) {
             return Response.ok().entity(tipoAtivo).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
@@ -45,8 +45,8 @@ public class TipoAtivoResource {
     @APIResponse(responseCode = "201", description = "Inserir tipo de ativo", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
     })
-    public Response insereTipoAtivo(@Valid TipoAtivoForm TipoAtivoForm) {
-        TipoAtivo novoTipoAtivo = TipoAtivoForm.convertion();
+    public Response insereTipoAtivo(@Valid TipoAtivoForm tipoAtivoForm) {
+        TipoAtivo novoTipoAtivo = tipoAtivoForm.convertion();
         TipoAtivo tipoAtivoCriado = tipoAtivoService.insereTipoAtivo(novoTipoAtivo);
         if (tipoAtivoCriado != null) {
             return Response.status(Response.Status.CREATED).entity(novoTipoAtivo).build();
@@ -63,8 +63,8 @@ public class TipoAtivoResource {
     @APIResponse(responseCode = "200", description = "Alterar um tipo de ativo.", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
     })
-    public Response alteraTipoAtivo(@PathParam("id") Long id, @Valid TipoAtivoForm TipoAtivoForm) {
-        TipoAtivo tipoAtivo = tipoAtivoService.alteraTipoAtivo(id, TipoAtivoForm.convertion());
+    public Response alteraTipoAtivo(@PathParam("id") Long id, @Valid TipoAtivoForm tipoAtivoForm) {
+        TipoAtivo tipoAtivo = tipoAtivoService.alteraTipoAtivo(id, tipoAtivoForm.convertion());
         if (tipoAtivo != null) {
             return Response.status(Response.Status.OK).entity(tipoAtivo).build();
         }

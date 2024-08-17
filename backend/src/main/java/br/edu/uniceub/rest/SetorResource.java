@@ -29,7 +29,7 @@ public class SetorResource {
     })
     public Response getSetor(@PathParam("id") Long id) {
         Optional<Setor> setor = setorService.getSetor(id);
-        if (Setor.isPresent()) {
+        if (setor.isPresent()) {
             return Response.ok().entity(setor).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
@@ -42,8 +42,8 @@ public class SetorResource {
     @APIResponse(responseCode = "201", description = "Inserir setor", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
     })
-    public Response insereSetor(@Valid SetorForm SetorForm) {
-        Setor novoSetor = SetorForm.convertion();
+    public Response insereSetor(@Valid SetorForm setorForm) {
+        Setor novoSetor = setorForm.convertion();
         Setor setorCriado = setorService.insereSetor(novoSetor);
         if (setorCriado != null) {
             return Response.status(Response.Status.CREATED).entity(novoSetor).build();
@@ -60,8 +60,8 @@ public class SetorResource {
     @APIResponse(responseCode = "200", description = "Alterar um setor.", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
     })
-    public Response alteraSetor(@PathParam("id") Long id, @Valid SetorForm SetorForm) {
-        Setor setor = setorService.alteraSetor(id, SetorForm.convertion());
+    public Response alteraSetor(@PathParam("id") Long id, @Valid SetorForm setorForm) {
+        Setor setor = setorService.alteraSetor(id, setorForm.convertion());
         if (setor != null) {
             return Response.status(Response.Status.OK).entity(setor).build();
         }
