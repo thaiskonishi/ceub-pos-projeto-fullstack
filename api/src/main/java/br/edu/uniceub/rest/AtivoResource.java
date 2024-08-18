@@ -1,10 +1,31 @@
 package br.edu.uniceub.rest;
 
 import java.util.List;
+import java.util.Optional;
 
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import br.edu.uniceub.form.AtivoForm;
+import br.edu.uniceub.models.Ativo;
 import br.edu.uniceub.service.AtivoService;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
-@path("/ativo")
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+
+@Path("/ativo")
 public class AtivoResource {
 
     @Inject
@@ -63,7 +84,7 @@ public class AtivoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
     public Response alteraAtivo(@PathParam("id") Long id, @Valid AtivoForm ativoForm) {
-        Ativo ativo = ativoService.alteraSetor(id, ativoForm.convertion());
+        Ativo ativo = ativoService.alteraAtivo(id, ativoForm.convertion());
         if (ativo != null) {
             return Response.status(Response.Status.OK).entity(ativo).build();
         }
@@ -79,7 +100,7 @@ public class AtivoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
     public Response deletaSetor(@PathParam("id") Long id) {
-        Ativo ativo = ativoService.deleteCotacao(id);
+        Ativo ativo = ativoService.deleteAtivo(id);
         if (ativo != null) {
             return Response.status(Response.Status.OK).entity(ativo).build();
         }

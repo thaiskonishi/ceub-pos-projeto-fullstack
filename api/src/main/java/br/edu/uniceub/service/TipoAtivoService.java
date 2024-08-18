@@ -1,6 +1,7 @@
 package br.edu.uniceub.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import br.edu.uniceub.models.TipoAtivo;
 

@@ -1,6 +1,9 @@
 package br.edu.uniceub.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import br.edu.uniceub.models.Ativo;
 
 public class AtivoService {
 
@@ -12,15 +15,15 @@ public class AtivoService {
         return null;
     }
 
-    public Ativo insereCotacao(Ativo novoAtivo) {
+    public Ativo insereAtivo(Ativo novoAtivo) {
         return null;
     }
 
-    public Ativo alteraCotacao(Long id, Ativo ativo) {
+    public Ativo alteraAtivo(Long id, Ativo ativo) {
         return null;
     }
 
-    public Ativo deleteCotacao(Long id) {
+    public Ativo deleteAtivo(Long id) {
         return null;
     }
     
