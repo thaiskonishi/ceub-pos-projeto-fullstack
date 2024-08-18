@@ -1,10 +1,31 @@
 package br.edu.uniceub.rest;
 
 import java.util.List;
+import java.util.Optional;
 
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import br.edu.uniceub.form.CotacaoForm;
+import br.edu.uniceub.models.Cotacao;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import br.edu.uniceub.service.CotacaoService;
 
-@path("/cotacao")
+@Path("/cotacao")
 public class CotacaoResource {
 
     @Inject
@@ -63,7 +84,7 @@ public class CotacaoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Cotacao.class))
     })
     public Response alteraSetor(@PathParam("id") Long id, @Valid CotacaoForm cotacaoForm) {
-        Cotacao cotacao = cotacaoService.alteraSetor(id, cotacaoForm.convertion());
+        Cotacao cotacao = cotacaoService.alteraCotacao(id, cotacaoForm.convertion());
         if (cotacao != null) {
             return Response.status(Response.Status.OK).entity(cotacao).build();
         }

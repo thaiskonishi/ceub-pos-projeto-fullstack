@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.Ativo;
+import jakarta.ws.rs.Path;
 
+@Path("/ativo")
 public class AtivoService {
 
     public List<Ativo> getAtivosList() {

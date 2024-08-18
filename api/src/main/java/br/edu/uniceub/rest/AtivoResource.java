@@ -7,7 +7,6 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import br.edu.uniceub.form.AtivoForm;
 import br.edu.uniceub.models.Ativo;
-import br.edu.uniceub.service.AtivoService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -24,6 +23,8 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+
+import br.edu.uniceub.service.AtivoService;
 
 @Path("/ativo")
 public class AtivoResource {

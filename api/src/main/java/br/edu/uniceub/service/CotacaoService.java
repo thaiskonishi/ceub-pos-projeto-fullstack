@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.Cotacao;
+import jakarta.ws.rs.Path;
 
+@Path("/cotacao")
 public class CotacaoService {
 
     public List<Cotacao> getCotacoesList() {

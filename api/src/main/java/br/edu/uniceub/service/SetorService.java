@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.Setor;
+import jakarta.ws.rs.Path;
 
+@Path("/setor")
 public class SetorService {
 
     public List<Setor> getSetoresList() {

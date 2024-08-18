@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.TipoAtivo;
+import jakarta.ws.rs.Path;
 
+@Path("/tipo-ativo")
 public class TipoAtivoService {
 
     public List<TipoAtivo> getTiposAtivosList() {

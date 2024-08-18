@@ -1,10 +1,20 @@
 package br.edu.uniceub.rest;
 
 import java.util.List;
-
+import br.edu.uniceub.models.HistoricoCotacao;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import br.edu.uniceub.service.HistoricoCotacaoService;
 
-@path("/historico-cotacao")
+@Path("/historico-cotacao")
 public class HistoricoCotacaoResource {
 
     @Inject
