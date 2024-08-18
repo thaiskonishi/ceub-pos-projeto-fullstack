@@ -4,29 +4,40 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.Setor;
+import br.edu.uniceub.repository.SetorRepository;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 
 @Path("/setor")
 public class SetorService {
 
+    @Inject
+    SetorRepository repository;
+
     public List<Setor> getSetoresList() {
-        return null;
+        return repository.listAll();
     }
 
     public Optional<Setor> getSetor(Long id) {
-        return null;
+        return repository.findByIdOptional(id);
     }
 
     public Setor insereSetor(Setor novoSetor) {
-        return null;
+        repository.persist(novoSetor);
+        return novoSetor;
     }
 
     public Setor alteraSetor(Long id, Setor setor) {
-        return null;
+        Setor entity = repository.findById(id);
+        if (entity != null) {
+            repository.isPersistent(setor);
+        }
+        return setor;
     }
 
     public Setor deleteSetor(Long id) {
-        return null;
+        boolean deletado =  repository.deleteById(id);
+        return (deletado) ? repository.findById(id):null;
     }
     
 }

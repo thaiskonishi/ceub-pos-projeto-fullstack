@@ -4,13 +4,18 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.TipoAtivo;
+import br.edu.uniceub.repository.TipoAtivoRepository;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
 
 @Path("/tipo-ativo")
 public class TipoAtivoService {
 
+    @Inject
+    TipoAtivoRepository repository;
+
     public List<TipoAtivo> getTiposAtivosList() {
-        return null;
+        return repository.getTiposAtivos();
     }
 
     public Optional<TipoAtivo> getTipoAtivo(Long id) {
