@@ -6,6 +6,7 @@ import java.util.Optional;
 import br.edu.uniceub.models.Setor;
 import br.edu.uniceub.repository.SetorRepository;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Path;
 
 @Path("/setor")
@@ -22,11 +23,13 @@ public class SetorService {
         return repository.findByIdOptional(id);
     }
 
+    @Transactional
     public Setor insereSetor(Setor novoSetor) {
         repository.persist(novoSetor);
         return novoSetor;
     }
 
+    @Transactional
     public Setor alteraSetor(Long id, Setor setor) {
         Setor entity = repository.findById(id);
         if (entity != null) {
@@ -35,6 +38,7 @@ public class SetorService {
         return setor;
     }
 
+    @Transactional
     public Setor deleteSetor(Long id) {
         boolean deletado =  repository.deleteById(id);
         return (deletado) ? repository.findById(id):null;

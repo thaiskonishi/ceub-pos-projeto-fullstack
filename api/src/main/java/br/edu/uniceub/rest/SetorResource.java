@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import br.edu.uniceub.dto.SetorDto;
 import br.edu.uniceub.form.SetorForm;
 import br.edu.uniceub.models.Setor;
 import jakarta.inject.Inject;
@@ -38,9 +39,9 @@ public class SetorResource {
     @APIResponse(responseCode = "200", description = "Recupera lista de setores", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
     })
-    public List<Setor> getSetores() {
+    public List<SetorDto> getSetores() {
         List<Setor> setores = setorService.getSetoresList();
-        return setores;
+        return SetorDto.convertion(setores);
     }
 
     @GET

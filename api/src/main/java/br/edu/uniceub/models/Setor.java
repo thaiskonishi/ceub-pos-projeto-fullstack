@@ -1,34 +1,32 @@
 package br.edu.uniceub.models;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.ToString;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(schema = "DB_FINANCAS",name="SETOR")
-public class Setor extends PanacheEntityBase {
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Getter
+public class Setor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqId")
-    @SequenceGenerator(name = "seqId", sequenceName = "Seq_ID", allocationSize = 1)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name="NOME")
-    private String nome;
-    @Column(name="DESCRICAO")
+    @Column(name = "nome_setor")
+    private String nomeSetor;
     private String descricao;
+
+    public Setor(String nomeSetor, String descricao) {
+        this.nomeSetor = nomeSetor;
+        this.descricao = descricao;
+    }
+
 }

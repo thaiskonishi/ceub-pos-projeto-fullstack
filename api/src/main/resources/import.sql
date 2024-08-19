@@ -1,67 +1,89 @@
--- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(1, 'field-1');
--- insert into myentity (id, field) values(2, 'field-2');
--- insert into myentity (id, field) values(3, 'field-3');
--- alter sequence myentity_seq restart with 4;
+-- -- H2 Script - Sem necessidade de criar o BD quando usado o Quakus Framework
 
-CREATE SCHEMA IF NOT EXISTS DB_FINANCAS;
+-- -- -----------------------------------------------------
+-- -- Schema creation
+-- -- -----------------------------------------------------
+-- CREATE SCHEMA IF NOT EXISTS dbFinancas;
 
-CREATE SEQUENCE IF NOT EXISTS DB_FINANCAS.Seq_ID
-    START WITH 1
-    INCREMENT BY 1;
-
-CREATE TABLE IF NOT EXISTS DB_FINANCAS.SETOR (
-    ID INT PRIMARY KEY,
-    NOME VARCHAR(45) NOT NULL,
-    DESCRICAO VARCHAR(400)
-);
-
-INSERT INTO DB_FINANCAS.SETOR (ID,NOME,DESCRICAO) VALUES (1,'FINANCEIRO','BANCOS');
-
-CREATE TABLE IF NOT EXISTS DB_FINANCAS.TIPO_ATIVO (
-    ID INT PRIMARY KEY,
-    NOME_TIPO_ATIVO VARCHAR(45) NOT NULL,
-    DESCRICAO VARCHAR(400)
-);
-
-INSERT INTO DB_FINANCAS.TIPO_ATIVO (ID,NOME_TIPO_ATIVO, DESCRICAO) VALUES (1,'financeiro','ativo financeiro');
-
-CREATE TABLE DB_FINANCAS.ATIVO (
-    ID INT PRIMARY KEY,
-    NOME VARCHAR(45) NOT NULL,
-    TICKER VARCHAR(45) NOT NULL,
-    DATA_FUNDACAO DATE NOT NULL,
-    ID_SETOR INT NOT NULL,
-    ID_TIPO_ATIVO INT NOT NULL,
-    -- FOREIGN KEY (ID_SETOR) REFERENCES DB_FINANCAS.SETOR(ID),
-    -- FOREIGN KEY (ID_TIPO_ATIVO) REFERENCES DB_FINANCAS.TIPO_ATIVO(ID)
-);
-
-INSERT INTO DB_FINANCAS.ATIVO(ID,NOME,TICKER,DATA_FUNDACAO,ID_SETOR,ID_TIPO_ATIVO) VALUES (1,'ativo 1','ticker 1','2020-01-01',1,1);
-
-CREATE TABLE DB_FINANCAS.COTACAO (
-    ID INT PRIMARY KEY,
-    ID_ATIVO INT NOT NULL,
-    DATA TIMESTAMP NOT NULL,
-    COTACAO FLOAT NOT NULL,
-    -- FOREIGN KEY (ID_ATIVO) REFERENCES DB_FINANCAS.ATIVO(ID)
-);
-
-CREATE TABLE DB_FINANCAS.HISTORICO_COTACAO (
-    ID INT PRIMARY KEY,
-    ID_ATIVO INT NOT NULL,
-    DATA TIMESTAMP NOT NULL,
-    COTACAO FLOAT NOT NULL
-);
-
-
+-- -- -----------------------------------------------------
+-- -- Table SETOR
+-- -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS SETOR;
+
+-- CREATE TABLE SETOR (
+--     ID INT PRIMARY KEY AUTO_INCREMENT,
+--     NOME_SETOR VARCHAR(45) NOT NULL,
+--     DESCRICAO VARCHAR(400),
+--     CONSTRAINT NOME_SETOR_UNIQUE UNIQUE (NOME_SETOR)
+-- );
+
+-- -- -----------------------------------------------------
+-- -- Table TIPO_ATIVO
+-- -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS TIPO_ATIVO;
--- DROP TABLE IF EXISTS COTACAO;
--- DROP TABLE IF EXISTS HISTORICO_COTACAO;
+
+-- CREATE TABLE TIPO_ATIVO (
+--     ID INT PRIMARY KEY AUTO_INCREMENT,
+--     NOME_TIPO_ATIVO VARCHAR(45) NOT NULL,
+--     DESCRICAO VARCHAR(400),
+--     CONSTRAINT NOME_TIPO_ATIVO_UNIQUE UNIQUE (NOME_TIPO_ATIVO)
+-- );
+
+-- -- -----------------------------------------------------
+-- -- Table ATIVO
+-- -- -----------------------------------------------------
 -- DROP TABLE IF EXISTS ATIVO;
 
--- DROP SEQUENCE Seq_ID;
--- DROP DATABASE dbFinancas;
--- DROP SCHEMA dbFinancas;
+-- CREATE TABLE ATIVO (
+--     ID INT PRIMARY KEY AUTO_INCREMENT,
+--     NOME VARCHAR(45) NOT NULL,
+--     TICKER VARCHAR(45) NOT NULL UNIQUE,
+--     DATA_FUNDACAO DATE NOT NULL,
+--     ID_SETOR INT NOT NULL,
+--     ID_TIPO_ATIVO INT NOT NULL,
+--     CONSTRAINT COD_SETOR_idx FOREIGN KEY (ID_SETOR) 
+--         REFERENCES SETOR (ID),
+--     CONSTRAINT COD_TIPO_ATIVO_idx FOREIGN KEY (ID_TIPO_ATIVO) 
+--         REFERENCES TIPO_ATIVO (ID)
+-- );
+
+-- -- -----------------------------------------------------
+-- -- Table COTACAO
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS COTACAO;
+
+-- CREATE TABLE COTACAO (
+--     ID INT PRIMARY KEY AUTO_INCREMENT,
+--     ID_ATIVO INT NOT NULL,
+--     DATA TIMESTAMP NOT NULL,
+--     COTACAO DOUBLE NOT NULL,
+--     CONSTRAINT ID_ATIVO_FK FOREIGN KEY (ID_ATIVO) 
+--         REFERENCES ATIVO (ID)
+-- );
+
+-- -- -----------------------------------------------------
+-- -- Table HISTORICO_COTACAO
+-- -- -----------------------------------------------------
+-- DROP TABLE IF EXISTS HISTORICO_COTACAO;
+
+-- CREATE TABLE HISTORICO_COTACAO (
+--     ID INT PRIMARY KEY AUTO_INCREMENT,
+--     ID_ATIVO INT NOT NULL,
+--     DATA TIMESTAMP NOT NULL,
+--     COTACAO DOUBLE NOT NULL
+-- );
+
+-- Inserts para a tabela SETOR
+
+INSERT INTO SETOR (NOME_SETOR)
+VALUES 
+('Bancos'),
+('Tecnologia'),
+('Energia'),
+('Saúde'),
+('Consumo Discricionário'),
+('Consumo Básico'),
+('Materiais Básicos'),
+('Telecomunicações'),
+('Imobiliário'),
+('Indústria');
