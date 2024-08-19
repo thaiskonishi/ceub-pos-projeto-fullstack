@@ -87,3 +87,9 @@ VALUES
 ('Telecomunicações'),
 ('Imobiliário'),
 ('Indústria');
+
+INSERT INTO TIPO_ATIVO (NOME_TIPO_ATIVO)
+VALUES 
+('Ação'),
+('Fundo de Investimento Imobiliário'),
+('Fundo de Investimento nas Cadeias Produtivas Agroindustriais');

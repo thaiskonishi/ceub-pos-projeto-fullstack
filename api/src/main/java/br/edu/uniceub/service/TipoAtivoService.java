@@ -3,7 +3,6 @@ package br.edu.uniceub.service;
 import java.util.List;
 import java.util.Optional;
 
-import br.edu.uniceub.models.Cotacao;
 import br.edu.uniceub.models.TipoAtivo;
 import br.edu.uniceub.repository.TipoAtivoRepository;
 import jakarta.inject.Inject;
@@ -16,7 +15,7 @@ public class TipoAtivoService {
     TipoAtivoRepository repository;
 
     public List<TipoAtivo> getTiposAtivosList() {
-        return repository.getTiposAtivos();
+        return repository.listAll();
     }
 
     public Optional<TipoAtivo> getTipoAtivo(Long id) {

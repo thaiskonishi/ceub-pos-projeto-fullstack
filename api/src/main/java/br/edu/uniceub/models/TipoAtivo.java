@@ -3,6 +3,8 @@ package br.edu.uniceub.models;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,10 +17,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(schema = "DB_FINANCAS",name="TIPO_ATIVO")
+//@Table(schema = "DB_FINANCAS",name="TIPO_ATIVO")
 public class TipoAtivo extends PanacheEntityBase{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 

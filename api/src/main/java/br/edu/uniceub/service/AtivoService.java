@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import br.edu.uniceub.models.Ativo;
-import br.edu.uniceub.models.Cotacao;
 import br.edu.uniceub.repository.AtivoRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Path;
