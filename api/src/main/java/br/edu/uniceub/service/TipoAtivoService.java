@@ -3,6 +3,7 @@ package br.edu.uniceub.service;
 import java.util.List;
 import java.util.Optional;
 
+import br.edu.uniceub.models.Cotacao;
 import br.edu.uniceub.models.TipoAtivo;
 import br.edu.uniceub.repository.TipoAtivoRepository;
 import jakarta.inject.Inject;
@@ -19,19 +20,25 @@ public class TipoAtivoService {
     }
 
     public Optional<TipoAtivo> getTipoAtivo(Long id) {
-        return null;
+        return repository.findByIdOptional(id);
     }
 
     public TipoAtivo insereTipoAtivo(TipoAtivo novoTipoAtivo) {
-        return null;
+        repository.persist(novoTipoAtivo);
+        return novoTipoAtivo;
     }
 
     public TipoAtivo alteraTipoAtivo(Long id, TipoAtivo tipoAtivo) {
-        return null;
+         TipoAtivo entity = repository.findById(id);
+        if (entity != null) {
+            repository.isPersistent(tipoAtivo);
+        }
+        return tipoAtivo;
     }
 
     public TipoAtivo deleteTipoAtivo(Long id) {
-        return null;
+        boolean deletado =  repository.deleteById(id);
+        return (deletado) ? repository.findById(id):null;
     }
     
 }

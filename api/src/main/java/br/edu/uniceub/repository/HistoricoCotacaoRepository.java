@@ -1,5 +1,12 @@
 package br.edu.uniceub.repository;
 
-public class HistoricoCotacaoRepository {
+import br.edu.uniceub.models.HistoricoCotacao;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import java.util.List;
+
+public class HistoricoCotacaoRepository implements PanacheRepository<HistoricoCotacao>{
     
+        public List<HistoricoCotacao> listAll(){
+        return findAll().list();
+    }
 }
