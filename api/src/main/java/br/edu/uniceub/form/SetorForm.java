@@ -17,7 +17,7 @@ public class SetorForm {
     private String descricao;
 
     public Setor convertion() {
-        return new Setor(0, nomeSetor, descricao);
+        return new Setor(nomeSetor, descricao);
     }
     
 }
