@@ -33,15 +33,22 @@ public class SetorService {
     public Setor alteraSetor(Long id, Setor setor) {
         Setor entity = repository.findById(id);
         if (entity != null) {
-            repository.isPersistent(setor);
+            entity.setNomeSetor(setor.getNomeSetor());
+            entity.setDescricao(setor.getDescricao());
+            setor.setId(entity.getId());
+            return setor;
         }
-        return setor;
+        return null;
     }
 
     @Transactional
     public Setor deleteSetor(Long id) {
-        boolean deletado =  repository.deleteById(id);
-        return (deletado) ? repository.findById(id):null;
+        Optional<Setor> optionalSetor = repository.findByIdOptional(id);
+        if (optionalSetor.isPresent()) {
+            repository.deleteById(id);
+            return optionalSetor.get();
+        }
+        return null;
     }
     
 }

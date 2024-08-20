@@ -5,6 +5,6 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class CotacaoRepository implements PanacheRepository<Cotacao>{
-    
+public class CotacaoRepository implements PanacheRepository<Cotacao> {
+
 }

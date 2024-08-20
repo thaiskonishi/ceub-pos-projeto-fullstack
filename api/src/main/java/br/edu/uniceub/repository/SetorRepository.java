@@ -7,5 +7,4 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class SetorRepository implements PanacheRepository<Setor> {
 
-    
 }

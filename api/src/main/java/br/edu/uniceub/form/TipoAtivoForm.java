@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class TipoAtivoForm {
 
     @NotNull(message = "O nome não pode ser vazio!")
@@ -17,7 +17,7 @@ public class TipoAtivoForm {
     private String descricao;
 
     public TipoAtivo convertion() {
-        return new TipoAtivo(0, nomeTipoAtivo, descricao);
+        return new TipoAtivo(nomeTipoAtivo, descricao);
     }
-    
+
 }

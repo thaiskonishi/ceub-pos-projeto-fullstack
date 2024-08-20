@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class SetorForm {
 
     @NotNull(message = "O nome não pode ser vazio!")

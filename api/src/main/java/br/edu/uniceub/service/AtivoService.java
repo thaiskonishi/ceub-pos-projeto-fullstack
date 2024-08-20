@@ -2,10 +2,15 @@ package br.edu.uniceub.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import br.edu.uniceub.dto.AtivoDto;
 import br.edu.uniceub.models.Ativo;
 import br.edu.uniceub.repository.AtivoRepository;
+import br.edu.uniceub.repository.SetorRepository;
+import br.edu.uniceub.repository.TipoAtivoRepository;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Path;
 
 @Path("/ativo")
@@ -14,30 +19,66 @@ public class AtivoService {
     @Inject
     AtivoRepository repository;
 
-    public List<Ativo> getAtivosList() {
-        return repository.listAll();
+    @Inject
+    SetorRepository setorRepository;
+
+    @Inject
+    TipoAtivoRepository tipoAtivoRepository;
+
+    public List<AtivoDto> getAtivosList() {
+        return repository.listAll().stream().map(this::ativoParaDto).collect(Collectors.toList());
     }
 
-    public Optional<Ativo> getAtivo(Long id) {
-        return repository.findByIdOptional(id);
+    public AtivoDto getAtivo(Long id) {
+        Optional<Ativo> ativo = repository.findByIdOptional(id);
+        if (ativo.isPresent()) {
+            return ativoParaDto(ativo.get());
+        }
+        return null;
     }
 
-    public Ativo insereAtivo(Ativo novoAtivo) {
+    @Transactional
+    public AtivoDto insereAtivo(Ativo novoAtivo) {
         repository.persist(novoAtivo);
-        return novoAtivo;
+        return ativoParaDto(novoAtivo);
     }
 
-    public Ativo alteraAtivo(Long id, Ativo ativo) {
+    @Transactional
+    public AtivoDto alteraAtivo(Long id, Ativo ativo) {
         Ativo entity = repository.findById(id);
         if (entity != null) {
-            repository.isPersistent(ativo);
+            entity.setNome(ativo.getNome());
+            entity.setTicker(ativo.getTicker());
+            entity.setDataFundacao(ativo.getDataFundacao());
+            entity.setIdSetor(ativo.getIdSetor());
+            entity.setIdTipoAtivo(ativo.getIdTipoAtivo());
+            ativo.setId(entity.getId());
+            return ativoParaDto(ativo);
         }
-        return ativo;
+        return null;
     }
 
-    public Ativo deleteAtivo(Long id) {
-        boolean deletado =  repository.deleteById(id);
-        return (deletado) ? repository.findById(id):null;
+    @Transactional
+    public AtivoDto deleteAtivo(Long id) {
+        Optional<Ativo> optionalAtivo = repository.findByIdOptional(id);
+        if (optionalAtivo.isPresent()) {
+            repository.deleteById(id);
+            return ativoParaDto(optionalAtivo.get());
+        }
+        return null;
     }
-    
+
+    public AtivoDto ativoParaDto(Ativo ativo) {
+        AtivoDto ativoDto = new AtivoDto();
+
+        ativoDto.setId(ativo.getId());
+        ativoDto.setNome(ativo.getNome());
+        ativoDto.setTicker(ativo.getTicker());
+        ativoDto.setDataFundacao(ativo.getDataFundacao());
+        ativoDto.setSetor(setorRepository.findById(ativo.getIdSetor().longValue()).getNomeSetor());
+        ativoDto.setTipoAtivo(tipoAtivoRepository.findById(ativo.getIdTipoAtivo().longValue()).getNomeTipoAtivo());
+
+        return ativoDto;
+    }
+
 }

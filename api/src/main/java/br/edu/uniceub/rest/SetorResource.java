@@ -54,7 +54,7 @@ public class SetorResource {
     public Response getSetor(@PathParam("id") Long id) {
         Optional<Setor> setor = setorService.getSetor(id);
         if (setor.isPresent()) {
-            return Response.ok().entity(setor).build();
+            return Response.ok().entity(new SetorDto(setor.get())).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -70,7 +70,7 @@ public class SetorResource {
         Setor novoSetor = setorForm.convertion();
         Setor setorCriado = setorService.insereSetor(novoSetor);
         if (setorCriado != null) {
-            return Response.status(Response.Status.CREATED).entity(novoSetor).build();
+            return Response.status(Response.Status.CREATED).entity(new SetorDto(novoSetor)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -87,7 +87,7 @@ public class SetorResource {
     public Response alteraSetor(@PathParam("id") Long id, @Valid SetorForm setorForm) {
         Setor setor = setorService.alteraSetor(id, setorForm.convertion());
         if (setor != null) {
-            return Response.status(Response.Status.OK).entity(setor).build();
+            return Response.status(Response.Status.OK).entity(new SetorDto(setor)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -103,7 +103,7 @@ public class SetorResource {
     public Response deletaSetor(@PathParam("id") Long id) {
         Setor setor = setorService.deleteSetor(id);
         if (setor != null) {
-            return Response.status(Response.Status.OK).entity(setor).build();
+            return Response.status(Response.Status.OK).entity(new SetorDto(setor)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }

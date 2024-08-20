@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import br.edu.uniceub.dto.TipoAtivoDto;
 import br.edu.uniceub.form.TipoAtivoForm;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -38,9 +39,9 @@ public class TipoAtivoResource {
     @APIResponse(responseCode = "200", description = "Recupera lista de tipos de ativos", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
     })
-    public List<TipoAtivo> getTiposAtivos() {
+    public List<TipoAtivoDto> getTiposAtivos() {
         List<TipoAtivo> tiposAtivos = tipoAtivoService.getTiposAtivosList();
-        return tiposAtivos;
+        return TipoAtivoDto.convertion(tiposAtivos);
     }
 
     @GET
@@ -53,7 +54,7 @@ public class TipoAtivoResource {
     public Response getTipoAtivo(@PathParam("id") Long id) {
         Optional<TipoAtivo> tipoAtivo = tipoAtivoService.getTipoAtivo(id);
         if (tipoAtivo.isPresent()) {
-            return Response.ok().entity(tipoAtivo).build();
+            return Response.ok().entity(new TipoAtivoDto(tipoAtivo.get())).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -69,7 +70,7 @@ public class TipoAtivoResource {
         TipoAtivo novoTipoAtivo = tipoAtivoForm.convertion();
         TipoAtivo tipoAtivoCriado = tipoAtivoService.insereTipoAtivo(novoTipoAtivo);
         if (tipoAtivoCriado != null) {
-            return Response.status(Response.Status.CREATED).entity(novoTipoAtivo).build();
+            return Response.status(Response.Status.CREATED).entity(new TipoAtivoDto(novoTipoAtivo)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -86,7 +87,7 @@ public class TipoAtivoResource {
     public Response alteraTipoAtivo(@PathParam("id") Long id, @Valid TipoAtivoForm tipoAtivoForm) {
         TipoAtivo tipoAtivo = tipoAtivoService.alteraTipoAtivo(id, tipoAtivoForm.convertion());
         if (tipoAtivo != null) {
-            return Response.status(Response.Status.OK).entity(tipoAtivo).build();
+            return Response.status(Response.Status.OK).entity(new TipoAtivoDto(tipoAtivo)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -102,7 +103,7 @@ public class TipoAtivoResource {
     public Response deletaTipoAtivo(@PathParam("id") Long id) {
         TipoAtivo tipoAtivo = tipoAtivoService.deleteTipoAtivo(id);
         if (tipoAtivo != null) {
-            return Response.status(Response.Status.OK).entity(tipoAtivo).build();
+            return Response.status(Response.Status.OK).entity(new TipoAtivoDto(tipoAtivo)).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }

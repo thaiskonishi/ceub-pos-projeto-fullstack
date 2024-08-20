@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import br.edu.uniceub.dto.AtivoDto;
 import br.edu.uniceub.form.AtivoForm;
 import br.edu.uniceub.models.Ativo;
 import jakarta.inject.Inject;
@@ -39,9 +40,8 @@ public class AtivoResource {
     @APIResponse(responseCode = "200", description = "Recupera lista de ativos", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
-    public List<Ativo> getAtivos() {
-        List<Ativo> ativos = ativoService.getAtivosList();
-        return ativos;
+    public List<AtivoDto> getAtivos() {
+        return ativoService.getAtivosList();
     }
 
     @GET
@@ -52,8 +52,8 @@ public class AtivoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
     public Response getAtivo(@PathParam("id") Long id) {
-        Optional<Ativo> ativo = ativoService.getAtivo(id);
-        if (ativo.isPresent()) {
+        AtivoDto ativo = ativoService.getAtivo(id);
+        if (ativo != null) {
             return Response.ok().entity(ativo).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
@@ -68,7 +68,7 @@ public class AtivoResource {
     })
     public Response insereAtivo(@Valid AtivoForm ativoForm) {
         Ativo novoAtivo = ativoForm.convertion();
-        Ativo ativoCriado = ativoService.insereAtivo(novoAtivo);
+        AtivoDto ativoCriado = ativoService.insereAtivo(novoAtivo);
         if (ativoCriado != null) {
             return Response.status(Response.Status.CREATED).entity(novoAtivo).build();
         }
@@ -85,7 +85,7 @@ public class AtivoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
     public Response alteraAtivo(@PathParam("id") Long id, @Valid AtivoForm ativoForm) {
-        Ativo ativo = ativoService.alteraAtivo(id, ativoForm.convertion());
+        AtivoDto ativo = ativoService.alteraAtivo(id, ativoForm.convertion());
         if (ativo != null) {
             return Response.status(Response.Status.OK).entity(ativo).build();
         }
@@ -101,7 +101,7 @@ public class AtivoResource {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
     })
     public Response deletaSetor(@PathParam("id") Long id) {
-        Ativo ativo = ativoService.deleteAtivo(id);
+        AtivoDto ativo = ativoService.deleteAtivo(id);
         if (ativo != null) {
             return Response.status(Response.Status.OK).entity(ativo).build();
         }

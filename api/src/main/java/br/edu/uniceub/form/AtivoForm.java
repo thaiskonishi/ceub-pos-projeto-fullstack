@@ -10,14 +10,18 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class AtivoForm {
 
     @NotNull(message = "O nome não pode ser vazio!")
     @Length(min = 5, max = 45, message = "Observar o tamanho mínimo e máximo para o nome.")
     private String nome;
+
+    @NotNull(message = "O ticker não pode ser vazio!")
+    @Length(min = 5, max = 6, message = "Observar o tamanho mínimo e máximo para o ticker.")
+    private String ticker;
 
     @NotNull(message = "A Data de Fundação não pode ser vazia!")
     private Date dataFundacao;
@@ -26,10 +30,10 @@ public class AtivoForm {
     private Integer idSetor;
 
     @NotNull(message = "O Tipo de Ativo não pode ser vazio!")
-    private Integer IdTipoAtivo;    
+    private Integer IdTipoAtivo;
 
     public Ativo convertion() {
-        return new Ativo(0, nome, dataFundacao, idSetor, IdTipoAtivo);
+        return new Ativo(nome, ticker, dataFundacao, idSetor, IdTipoAtivo);
     }
-    
+
 }

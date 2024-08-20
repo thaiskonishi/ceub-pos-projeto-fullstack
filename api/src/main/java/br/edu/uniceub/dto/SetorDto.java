@@ -11,8 +11,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class SetorDto {
 
     private Integer id;
@@ -28,5 +28,5 @@ public class SetorDto {
     public static List<SetorDto> convertion(List<Setor> setores) {
         return setores.stream().map(SetorDto::new).collect(Collectors.toList());
     }
-    
+
 }

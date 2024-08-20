@@ -11,24 +11,31 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-//@Table(schema = "DB_FINANCAS",name="TIPO_ATIVO")
-public class TipoAtivo extends PanacheEntityBase{
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "TIPO_ATIVO")
+public class TipoAtivo extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name="NOME_TIPO_ATIVO")
+    @Column(name = "NOME_TIPO_ATIVO")
     private String nomeTipoAtivo;
 
-    @Column(name ="DESCRICAO" )
+    @Column(name = "DESCRICAO")
     private String descricao;
+
+    public TipoAtivo(String nomeTipoAtivo, String descricao) {
+        this.nomeTipoAtivo = nomeTipoAtivo;
+        this.descricao = descricao;
+    }
 
 }
