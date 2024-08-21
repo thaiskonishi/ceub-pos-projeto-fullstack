@@ -13,12 +13,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="COTACAO")
 public class Cotacao extends PanacheEntityBase{
 
@@ -35,4 +37,11 @@ public class Cotacao extends PanacheEntityBase{
 
     @Column(name = "COTACAO")
     private Double cotacao;
+
+    public Cotacao(Integer idAtivo, LocalDateTime data, Double cotacao) {
+        this.idAtivo = idAtivo;
+        this.data = data;
+        this.cotacao = cotacao;
+    }
+
 }

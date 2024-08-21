@@ -37,7 +37,7 @@ public class SetorResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera a lista de setores.", description = "Lista de setores no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera lista de setores", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = SetorDto.class))
     })
     public List<SetorDto> getSetores() {
         List<Setor> setores = setorService.getSetoresList();
@@ -49,7 +49,7 @@ public class SetorResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera os detalhes de um setores da base de dados.", description = "Apresenta o registro de um setores no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera o registro de um setor.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = SetorDto.class))
     })
     public Response getSetor(@PathParam("id") Long id) {
         Optional<Setor> setor = setorService.getSetor(id);
@@ -64,7 +64,7 @@ public class SetorResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Insere um setor na base de dados.", description = "Inclui um setor na base de dados.")
     @APIResponse(responseCode = "201", description = "Inserir setor", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = SetorDto.class))
     })
     public Response insereSetor(@Valid SetorForm setorForm) {
         Setor novoSetor = setorForm.convertion();
@@ -82,7 +82,7 @@ public class SetorResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Altera um setor na base de dados.", description = "Altera um setor na base de dados.")
     @APIResponse(responseCode = "200", description = "Alterar um setor.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = SetorDto.class))
     })
     public Response alteraSetor(@PathParam("id") Long id, @Valid SetorForm setorForm) {
         Setor setor = setorService.alteraSetor(id, setorForm.convertion());
@@ -98,7 +98,7 @@ public class SetorResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Deleta um setor da base de dados.", description = "Deleta um setor da base de dados.")
     @APIResponse(responseCode = "200", description = "Deletar setor.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Setor.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = SetorDto.class))
     })
     public Response deletaSetor(@PathParam("id") Long id) {
         Setor setor = setorService.deleteSetor(id);
@@ -107,5 +107,5 @@ public class SetorResource {
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
-    
+
 }

@@ -1,8 +1,6 @@
 package br.edu.uniceub.rest;
 
 import java.util.List;
-import java.util.Optional;
-
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import br.edu.uniceub.dto.AtivoDto;
@@ -38,7 +36,7 @@ public class AtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera a lista de ativos.", description = "Lista de ativos no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera lista de ativos", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = AtivoDto.class))
     })
     public List<AtivoDto> getAtivos() {
         return ativoService.getAtivosList();
@@ -49,7 +47,7 @@ public class AtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera os detalhes de um ativo da base de dados.", description = "Apresenta o registro de um ativo no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera o registro de um ativo.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = AtivoDto.class))
     })
     public Response getAtivo(@PathParam("id") Long id) {
         AtivoDto ativo = ativoService.getAtivo(id);
@@ -64,13 +62,13 @@ public class AtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Insere um ativo na base de dados.", description = "Inclui um ativo na base de dados.")
     @APIResponse(responseCode = "201", description = "Inserir ativo", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = AtivoDto.class))
     })
     public Response insereAtivo(@Valid AtivoForm ativoForm) {
         Ativo novoAtivo = ativoForm.convertion();
         AtivoDto ativoCriado = ativoService.insereAtivo(novoAtivo);
         if (ativoCriado != null) {
-            return Response.status(Response.Status.CREATED).entity(novoAtivo).build();
+            return Response.status(Response.Status.CREATED).entity(ativoCriado).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -82,7 +80,7 @@ public class AtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Altera um ativo na base de dados.", description = "Altera um ativo na base de dados.")
     @APIResponse(responseCode = "200", description = "Alterar um ativo.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = AtivoDto.class))
     })
     public Response alteraAtivo(@PathParam("id") Long id, @Valid AtivoForm ativoForm) {
         AtivoDto ativo = ativoService.alteraAtivo(id, ativoForm.convertion());
@@ -98,7 +96,7 @@ public class AtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Deleta um ativo da base de dados.", description = "Deleta um ativo da base de dados.")
     @APIResponse(responseCode = "200", description = "Deletar ativo.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Ativo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = AtivoDto.class))
     })
     public Response deletaSetor(@PathParam("id") Long id) {
         AtivoDto ativo = ativoService.deleteAtivo(id);

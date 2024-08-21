@@ -37,7 +37,7 @@ public class TipoAtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera a lista de tipos de ativo.", description = "Lista de tipos de ativo no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera lista de tipos de ativos", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivoDto.class))
     })
     public List<TipoAtivoDto> getTiposAtivos() {
         List<TipoAtivo> tiposAtivos = tipoAtivoService.getTiposAtivosList();
@@ -49,7 +49,7 @@ public class TipoAtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Recupera os detalhes de um tipos de ativo da base de dados.", description = "Apresenta o registro de um tipos de ativo no formato JSON")
     @APIResponse(responseCode = "200", description = "Recupera o registro de um tipos de ativo", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivoDto.class))
     })
     public Response getTipoAtivo(@PathParam("id") Long id) {
         Optional<TipoAtivo> tipoAtivo = tipoAtivoService.getTipoAtivo(id);
@@ -64,7 +64,7 @@ public class TipoAtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Insere um tipo de ativo na base de dados.", description = "Inclui um tipo de ativo na base de dados.")
     @APIResponse(responseCode = "201", description = "Inserir tipo de ativo", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivoDto.class))
     })
     public Response insereTipoAtivo(@Valid TipoAtivoForm tipoAtivoForm) {
         TipoAtivo novoTipoAtivo = tipoAtivoForm.convertion();
@@ -82,7 +82,7 @@ public class TipoAtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Altera um tipo de ativo na base de dados.", description = "Altera um tipo de ativo na base de dados.")
     @APIResponse(responseCode = "200", description = "Alterar um tipo de ativo.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivoDto.class))
     })
     public Response alteraTipoAtivo(@PathParam("id") Long id, @Valid TipoAtivoForm tipoAtivoForm) {
         TipoAtivo tipoAtivo = tipoAtivoService.alteraTipoAtivo(id, tipoAtivoForm.convertion());
@@ -98,7 +98,7 @@ public class TipoAtivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Deleta um tipo de ativo da base de dados.", description = "Deleta um tipo de ativo da base de dados.")
     @APIResponse(responseCode = "200", description = "Deletar tipo de ativo.", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivo.class))
+            @Content(mediaType = "application/json", schema = @Schema(implementation = TipoAtivoDto.class))
     })
     public Response deletaTipoAtivo(@PathParam("id") Long id) {
         TipoAtivo tipoAtivo = tipoAtivoService.deleteTipoAtivo(id);

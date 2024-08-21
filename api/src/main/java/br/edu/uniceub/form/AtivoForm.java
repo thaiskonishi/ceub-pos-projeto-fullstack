@@ -30,10 +30,10 @@ public class AtivoForm {
     private Integer idSetor;
 
     @NotNull(message = "O Tipo de Ativo não pode ser vazio!")
-    private Integer IdTipoAtivo;
+    private Integer idTipoAtivo;
 
     public Ativo convertion() {
-        return new Ativo(nome, ticker, dataFundacao, idSetor, IdTipoAtivo);
+        return new Ativo(nome, ticker, dataFundacao, idSetor, idTipoAtivo);
     }
 
 }
