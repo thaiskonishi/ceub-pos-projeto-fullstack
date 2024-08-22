@@ -1,21 +1,21 @@
 <div *ngIf="tiposAtivo.length > 0; else noData">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let tipoAtivo of tiposAtivo">
-          <td>{{ tipoAtivo.id }}</td>
-          <td>{{ tipoAtivo.nomeTipoAtivo }}</td>
-          <td>{{ tipoAtivo.descricao }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #noData>
-    <p>Nenhum tipo de ativo encontrado.</p>
-  </ng-template>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let tipoAtivo of tiposAtivo">
+				<td>{{ tipoAtivo.id }}</td>
+				<td>{{ tipoAtivo.nomeTipoAtivo }}</td>
+				<td>{{ tipoAtivo.descricao }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ng-template #noData>
+	<p>Nenhum tipo de ativo encontrado.</p>
+</ng-template>

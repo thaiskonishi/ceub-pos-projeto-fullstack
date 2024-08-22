@@ -1,34 +1,34 @@
-.container-login{
-	display:flex;
+.container-login {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 50px;
-
 }
 
-.container-login-central{
-	display:grid;
+.container-login-central {
+	display: grid;
 	justify-content: center;
 	align-items: center;
 	width: 445px;
 	height: 460px;
 	background-color: yellow;
-
 }
-.container-header{
-	.titulo-login{
+.container-header {
+	.titulo-login {
 		font-style: normal;
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+			sans-serif;
 		font-weight: 700;
 		font-size: 34px;
 		text-align: center;
 		color: blue;
 		height: 60px;
 	}
-	.info-login{
+	.info-login {
 		padding-top: 16px;
 		font-style: normal;
-		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+			sans-serif;
 		font-weight: 400;
 		font-size: 14px;
 		text-align: center;
@@ -36,19 +36,17 @@
 		height: 20px;
 	}
 
-	.container-form{
+	.container-form {
 		display: flex;
 		justify-content: baseline;
 		align-items: baseline;
-
 	}
-	.form-input{
-
+	.form-input {
 	}
 }
 
-.group-input{
-	.text-info{
+.group-input {
+	.text-info {
 		display: flex;
 		font-style: normal;
 		font-weight: 500;
@@ -58,23 +56,22 @@
 		color: black;
 		padding-left: 5%;
 	}
-
-	}
-.input-form{
+}
+.input-form {
 	display: flex;
 	align-items: center;
 	padding: 10px 15px;
-	width:90%;
+	width: 90%;
 	padding-left: 5%;
 	margin: 5px 5px;
 
 	border-radius: 5px;
 }
 
-.btn-login{
+.btn-login {
 	margin-top: 16px;
-	display:flex;
-	align-items:center;
+	display: flex;
+	align-items: center;
 	padding: 10px 25px;
 
 	width: 100%;
