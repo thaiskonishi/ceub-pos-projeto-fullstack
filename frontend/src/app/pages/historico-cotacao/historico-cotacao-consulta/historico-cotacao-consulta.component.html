@@ -1,0 +1,24 @@
+<div *ngIf="historicoCotacoes.length > 0; else noData">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ticker</th>
+          <th>Data</th>
+          <th>Cotação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of historicoCotacoes">
+          <td>{{ item.id }}</td>
+          <td>{{ item.ticker }}</td>
+          <td>{{ item.data | date: 'dd/MM/yyyy HH:mm' }}</td>  <!-- Formatar data -->
+          <td>{{ item.cotacao | number: '1.2-2' }}</td>  <!-- Formatar cotação -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noData>
+    <p>Nenhum histórico de cotações encontrado.</p>
+  </ng-template>
+  

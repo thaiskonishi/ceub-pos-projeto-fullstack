@@ -1,6 +1,8 @@
-import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { SetorConsultaComponent } from './pages/setor/setor-consulta/setor-consulta.component';
+import { TipoAtivoConsultaComponent } from './pages/tipo-ativo/tipo-ativo-consulta/tipo-ativo-consulta.component';
+import { HistoricoCotacaoConsultaComponent } from './pages/historico-cotacao/historico-cotacao-consulta/historico-cotacao-consulta.component';
 
 export const routes: Routes = [
 		{
@@ -17,6 +19,8 @@ export const routes: Routes = [
 			path: '',
 			component: LoginComponent,
 		},
+		{ path: 'tipo-ativo', component: TipoAtivoConsultaComponent },
+  		{ path: 'setor', component: SetorConsultaComponent },
+		{ path: 'historico-cotacoes/:id', component: HistoricoCotacaoConsultaComponent },
 
 ];
-
