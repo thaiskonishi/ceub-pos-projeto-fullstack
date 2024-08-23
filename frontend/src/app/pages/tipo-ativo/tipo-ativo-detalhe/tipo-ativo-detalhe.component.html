@@ -1,0 +1,19 @@
+<div>
+    <h2>{{ isEditMode ? 'Editar Tipo de Ativo' : 'Criar Novo Tipo de Ativo' }}</h2>
+    <form>
+      <div>
+        <label for="nome">Nome:</label>
+        <input id="nome" [(ngModel)]="tipoAtivo.nomeTipoAtivo" name="nomeTipoAtivo" />
+      </div>
+      <div>
+        <label for="descricao">Descrição:</label>
+        <input id="descricao" [(ngModel)]="tipoAtivo.descricao" name="descricao" />
+      </div>
+      <div>
+        <button type="button" (click)="save()">Salvar</button>
+        <button type="button" *ngIf="isEditMode" (click)="delete()">Deletar</button>
+        <button type="button" (click)="cancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

@@ -5,6 +5,7 @@
 				<th>ID</th>
 				<th>Nome</th>
 				<th>Descrição</th>
+				<th>Ações</th> <!-- Nova coluna para ações -->
 			</tr>
 		</thead>
 		<tbody>
@@ -12,6 +13,9 @@
 				<td>{{ tipoAtivo.id }}</td>
 				<td>{{ tipoAtivo.nomeTipoAtivo }}</td>
 				<td>{{ tipoAtivo.descricao }}</td>
+				<td>
+					<button (click)="editarTipoAtivo(tipoAtivo.id)">Editar</button> <!-- Botão de edição -->
+				</td>
 			</tr>
 		</tbody>
 	</table>

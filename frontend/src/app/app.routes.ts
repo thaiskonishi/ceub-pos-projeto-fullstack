@@ -5,6 +5,7 @@ import { TipoAtivoConsultaComponent } from './pages/tipo-ativo/tipo-ativo-consul
 import { HistoricoCotacaoConsultaComponent } from './pages/historico-cotacao/historico-cotacao-consulta/historico-cotacao-consulta.component';
 import { CotacaoConsultaComponent } from './pages/cotacao/cotacao-consulta/cotacao-consulta.component';
 import { AtivoConsultaComponent } from './pages/ativo/ativo-consulta/ativo-consulta.component';
+import { TipoAtivoDetalheComponent } from './pages/tipo-ativo/tipo-ativo-detalhe/tipo-ativo-detalhe.component';
 
 export const routes: Routes = [
 	{
@@ -29,4 +30,7 @@ export const routes: Routes = [
 	},
 	{ path: 'cotacoes', component: CotacaoConsultaComponent },
 	{ path: 'ativos', component: AtivoConsultaComponent },
+	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent },
+	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent }, 
+	{ path: 'tipos-ativo/novo', component: TipoAtivoDetalheComponent },
 ];
