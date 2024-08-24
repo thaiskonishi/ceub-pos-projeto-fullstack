@@ -12,7 +12,7 @@ import { CotacaoDto, CotacaoService } from '../../../services/cotacao.service';
 	styleUrl: './cotacao-detalhe.component.scss',
 })
 export class CotacaoDetalheComponent implements OnInit {
-	cotacao: CotacaoDto = { id: 0, ticker: '', data: new Date(), cotacao: 0 };
+	cotacao: CotacaoDto = { id: 0, idAtivo: 0, ticker: '', data: '', cotacao: 0 };
 	isEditMode: boolean = false;
 
 	constructor(
@@ -27,11 +27,13 @@ export class CotacaoDetalheComponent implements OnInit {
 			this.isEditMode = true;
 			this.cotacaoService.recuperaCotacao(parseInt(id)).subscribe((data) => {
 				this.cotacao = data;
+				this.cotacao.data = this.formatDateWithSPTimeZone(new Date());
 			});
 		}
 	}
 
 	salvar(): void {
+		this.cotacao.data = this.formatDateWithSPTimeZone(new Date());
 		if (this.isEditMode) {
 			this.cotacaoService.atualizarCotacao(this.cotacao).subscribe(() => {
 				this.router.navigate(['/cotacoes']);
@@ -53,4 +55,9 @@ export class CotacaoDetalheComponent implements OnInit {
 		this.router.navigate(['/cotacoes']);
 	}
 
+	formatDateWithSPTimeZone(date: Date): string {
+		const offset = new Date().getTimezoneOffset(); // Em minutos
+		const localDate = new Date(Date.now() - offset * 60000); // Ajusta o horário
+		return (this.cotacao.data = localDate.toISOString().slice(0, 19));
+	}
 }

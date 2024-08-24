@@ -14,13 +14,13 @@ import br.edu.uniceub.models.Cotacao;
 @NoArgsConstructor
 public class CotacaoForm {
 
-    @NotNull(message = "O nome não pode ser vazio!")
+    @NotNull(message = "Nenhum ID repassado!")
     private Integer idAtivo;
 
-    @NotNull(message = "O nome não pode ser vazio!")
+    @NotNull(message = "A data não pode ser vazia e tem de estar no formato 2022-03-10T12:15:50!")
     private LocalDateTime data;
 
-    @NotNull(message = "O nome não pode ser vazio!")
+    @NotNull(message = "A cotação não pode ser vazia!")
     private Double cotacao;
 
     public Cotacao convertion() {

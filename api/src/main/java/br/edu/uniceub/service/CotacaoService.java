@@ -71,6 +71,7 @@ public class CotacaoService {
         CotacaoDto cotacaoDto = new CotacaoDto();
 
         cotacaoDto.setId(cotacao.getId());
+        cotacaoDto.setIdAtivo(cotacao.getIdAtivo());
         cotacaoDto.setTicker(ativoRepository.findById(cotacao.getIdAtivo().longValue()).getTicker());
         cotacaoDto.setData(cotacao.getData());
         cotacaoDto.setCotacao(cotacao.getCotacao());

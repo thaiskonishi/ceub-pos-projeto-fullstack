@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SetorForm {
 
-    @NotNull(message = "O nome não pode ser vazio!")
+    @NotNull(message = "O nome do setor não pode ser vazio!")
     private String nomeSetor;
     @NotNull(message = "O nome não pode ser vazio!")
     private String descricao;

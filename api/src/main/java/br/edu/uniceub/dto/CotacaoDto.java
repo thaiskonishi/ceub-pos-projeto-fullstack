@@ -15,12 +15,14 @@ import lombok.Setter;
 public class CotacaoDto {
 
     private Integer id;
+    private Integer idAtivo;
     private String ticker;
     private LocalDateTime data;
     private Double cotacao;
 
     public CotacaoDto(Cotacao cotacao, String ticker) {
         this.id = cotacao.getId();
+        this.idAtivo = cotacao.getIdAtivo();
         this.ticker = ticker;
         this.data = cotacao.getData();
         this.cotacao = cotacao.getCotacao();
