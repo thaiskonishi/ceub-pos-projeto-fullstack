@@ -1,0 +1,18 @@
+<div>
+    <h2>{{ isEditMode ? 'Editar Setor' : 'Criar Novo Setor' }}</h2>
+    <form>
+        <div>
+            <label for="nomeSetor">Nome do Setor:</label>
+            <input id="nomeSetor" [(ngModel)]="setor.nomeSetor" name="nomeSetor" />
+        </div>
+        <div>
+            <label for="descricao">Descrição:</label>
+            <input id="descricao" [(ngModel)]="setor.descricao" name="descricao" />
+        </div>
+        <div>
+            <button type="button" (click)="salvar()">Salvar</button>
+            <button type="button" *ngIf="isEditMode" (click)="deletar()">Deletar</button>
+            <button type="button" (click)="cancelar()">Cancelar</button>
+        </div>
+    </form>
+</div>

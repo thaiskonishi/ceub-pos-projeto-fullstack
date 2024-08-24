@@ -1,15 +1,23 @@
 <div *ngIf="setores.length > 0; else noData">
 	<table>
-		<tr>
-			<th>ID</th>
-			<th>Nome do Setor</th>
-			<th>Descrição</th>
-		</tr>
-		<tr *ngFor="let setor of setores">
-			<td>{{ setor.id }}</td>
-			<td>{{ setor.nomeSetor }}</td>
-			<td>{{ setor.descricao }}</td>
-		</tr>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome do Setor</th>
+				<th>Descrição</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let setor of setores">
+				<td>{{ setor.id }}</td>
+				<td>{{ setor.nomeSetor }}</td>
+				<td>{{ setor.descricao }}</td>
+				<td>
+					<button (click)="editarSetor(setor.id)">Editar</button>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </div>
 <ng-template #noData>

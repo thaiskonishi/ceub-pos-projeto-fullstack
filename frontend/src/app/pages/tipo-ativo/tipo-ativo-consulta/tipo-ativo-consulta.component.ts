@@ -4,6 +4,7 @@ import {
 	TipoAtivoService,
 } from '../../../services/tipo-ativo.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-tipo-ativo-consulta',
@@ -15,11 +16,23 @@ import { CommonModule } from '@angular/common';
 export class TipoAtivoConsultaComponent implements OnInit {
 	tiposAtivo: TipoAtivoDto[] = [];
 
-	constructor(private tipoAtivoService: TipoAtivoService) {}
+	constructor(
+		private tipoAtivoService: TipoAtivoService,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
-		this.tipoAtivoService.listarTiposAtivo().subscribe((data) => {
-			this.tiposAtivo = data;
+		this.carregaTiposAtivo();
+	}
+
+	private carregaTiposAtivo() {
+		this.tipoAtivoService.listarTiposAtivo().subscribe({
+			next: (data) => (this.tiposAtivo = data),
+			error: (err) => console.error('Erro ao carregar cotações', err),
 		});
+	}
+
+	editarTipoAtivo(id: number): void {
+		this.router.navigate(['/tipos-ativo/detalhes/', id]);
 	}
 }
