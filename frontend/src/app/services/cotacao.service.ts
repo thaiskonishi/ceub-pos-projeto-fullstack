@@ -5,8 +5,9 @@ import { enviroment } from '../enviroment';
 
 export interface CotacaoDto {
 	id: number;
+	idAtivo: number;
 	ticker: string;
-	data: Date;
+	data: string;
 	cotacao: number;
 }
 
@@ -28,18 +29,18 @@ export class CotacaoService {
 		return this.http.get<CotacaoDto>(`${this.apiUrl}/detalhes/${id}`);
 	}
 
-	salvarCotacao(tipoAtivo: CotacaoDto): Observable<CotacaoDto> {
-		return this.http.post<CotacaoDto>(`${this.apiUrl}`, tipoAtivo);
+	salvarCotacao(cotacao: CotacaoDto): Observable<CotacaoDto> {
+		return this.http.post<CotacaoDto>(`${this.apiUrl}`, cotacao);
 	}
 
 	deletarCotacao(id: number): Observable<void> {
 		return this.http.delete<void>(`${this.apiUrl}/${id}`);
 	}
 
-	atualizarCotacao(tipoAtivo: CotacaoDto): Observable<CotacaoDto> {
+	atualizarCotacao(cotacao: CotacaoDto): Observable<CotacaoDto> {
 		return this.http.put<CotacaoDto>(
-			`${this.apiUrl}/${tipoAtivo.id}`,
-			tipoAtivo
+			`${this.apiUrl}/${cotacao.id}`,
+			cotacao
 		);
 	}
 }

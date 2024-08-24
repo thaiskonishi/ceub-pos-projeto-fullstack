@@ -8,6 +8,7 @@ import { AtivoConsultaComponent } from './pages/ativo/ativo-consulta/ativo-consu
 import { TipoAtivoDetalheComponent } from './pages/tipo-ativo/tipo-ativo-detalhe/tipo-ativo-detalhe.component';
 import { SetorDetalheComponent } from './pages/setor/setor-detalhe/setor-detalhe.component';
 import { CotacaoDetalheComponent } from './pages/cotacao/cotacao-detalhe/cotacao-detalhe.component';
+import { AtivoDetalheComponent } from './pages/ativo/ativo-detalhe/ativo-detalhe.component';
 
 export const routes: Routes = [
 	{
@@ -36,7 +37,8 @@ export const routes: Routes = [
 	{ path: 'cotacoes/detalhes/:id', component: CotacaoDetalheComponent },
 	{ path: 'cotacoes/novo', component: CotacaoDetalheComponent},
 	{ path: 'ativos', component: AtivoConsultaComponent },
-
+	{ path: 'ativos/detalhes/:id', component: AtivoDetalheComponent },
+	{ path: 'ativos/novo', component: AtivoDetalheComponent},
 	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent },
 	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent },
 	{ path: 'tipos-ativo/novo', component: TipoAtivoDetalheComponent },

@@ -81,7 +81,7 @@ public class CotacaoResource {
     @APIResponse(responseCode = "200", description = "Alterar um cotacao.", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = CotacaoDto.class))
     })
-    public Response alteraSetor(@PathParam("id") Long id, @Valid CotacaoForm cotacaoForm) {
+    public Response alteraCotacao(@PathParam("id") Long id, @Valid CotacaoForm cotacaoForm) {
         CotacaoDto cotacao = cotacaoService.alteraCotacao(id, cotacaoForm.convertion());
         if (cotacao != null) {
             return Response.status(Response.Status.OK).entity(cotacao).build();
@@ -97,7 +97,7 @@ public class CotacaoResource {
     @APIResponse(responseCode = "200", description = "Deletar cotacao.", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = CotacaoDto.class))
     })
-    public Response deletaSetor(@PathParam("id") Long id) {
+    public Response deletaCotacao(@PathParam("id") Long id) {
         CotacaoDto cotacao = cotacaoService.deleteCotacao(id);
         if (cotacao != null) {
             return Response.status(Response.Status.OK).entity(cotacao).build();

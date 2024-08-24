@@ -1,0 +1,44 @@
+<div>
+    <h2>{{ isEditMode ? 'Editar Ativo' : 'Criar Novo Ativo' }}</h2>
+    <form>
+      <div>
+        <label for="nome">Nome:</label>
+        <input id="nome" [(ngModel)]="ativo.nome" name="nome" />
+      </div>
+      <div>
+        <label for="ticker">Ticker:</label>
+        <input id="ticker" [(ngModel)]="ativo.ticker" name="ticker" />
+      </div>
+      <div>
+        <label for="dataFundacao">Data de Fundação:</label>
+        <input
+          id="dataFundacao"
+          [(ngModel)]="ativo.dataFundacao"
+          name="dataFundacao"
+          type="date"
+        />
+      </div>
+      <div>
+        <label for="idSetor">Setor:</label>
+        <select id="idSetor" [(ngModel)]="ativo.idSetor" name="idSetor">
+          <option *ngFor="let setor of setores" [value]="setor.id">
+            {{ setor.nomeSetor }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="idTipoAtivo">Tipo de Ativo:</label>
+        <select id="idTipoAtivo" [(ngModel)]="ativo.idTipoAtivo" name="idTipoAtivo">
+          <option *ngFor="let tipo of tiposAtivo" [value]="tipo.id">
+            {{ tipo.nomeTipoAtivo }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button type="button" (click)="salvar()">Salvar</button>
+        <button type="button" *ngIf="isEditMode" (click)="deletar()">Deletar</button>
+        <button type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

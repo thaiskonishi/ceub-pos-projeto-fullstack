@@ -1,23 +1,18 @@
 <div>
-    <h2>{{ isEditMode ? 'Editar Cotação' : 'Criar Nova Cotação' }}</h2>
-    <form>
-      <div>
-        <label for="ticker">Ticker:</label>
-        <input id="ticker" [(ngModel)]="cotacao.ticker" name="ticker" />
-      </div>
-      <div>
-        <label for="data">Data:</label>
-        <input id="data" [(ngModel)]="cotacao.data" name="data" type="date" />
-      </div>
-      <div>
-        <label for="cotacao">Cotação:</label>
-        <input id="cotacao" [(ngModel)]="cotacao.cotacao" name="cotacao" type="number" />
-      </div>
-      <div>
-        <button type="button" (click)="salvar()">Salvar</button>
-        <button type="button" *ngIf="isEditMode" (click)="deletar()">Deletar</button>
-        <button type="button" (click)="cancelar()">Cancelar</button>
-      </div>
-    </form>
-  </div>
-  
+  <h2>{{ isEditMode ? 'Editar Cotação' : 'Criar Nova Cotação' }}</h2>
+  <form>
+    <div>
+      <label for="ticker">Ticker:</label>
+      <input id="ticker" [(ngModel)]="cotacao.ticker" name="ticker" />
+    </div>
+    <div>
+      <label for="cotacao">Cotação:</label>
+      <input id="cotacao" [(ngModel)]="cotacao.cotacao" name="cotacao" type="number" />
+    </div>
+    <div>
+      <button type="button" (click)="salvar()">Salvar</button>
+      <button type="button" *ngIf="isEditMode" (click)="deletar()">Deletar</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

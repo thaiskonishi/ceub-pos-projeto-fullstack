@@ -29,10 +29,10 @@ export class SetorService {
 		);
 	}
 
-	salvarSetor(tipoAtivo: SetorDto): Observable<SetorDto> {
+	salvarSetor(setor: SetorDto): Observable<SetorDto> {
 		return this.http.post<SetorDto>(
 			`${enviroment.endpoint}${this.pathSetor}`,
-			tipoAtivo
+			setor
 		);
 	}
 
@@ -42,10 +42,10 @@ export class SetorService {
 		);
 	}
 
-	atualizarSetor(tipoAtivo: SetorDto): Observable<SetorDto> {
+	atualizarSetor(setor: SetorDto): Observable<SetorDto> {
 		return this.http.put<SetorDto>(
-			`${enviroment.endpoint}${this.pathSetor}/${tipoAtivo.id}`,
-			tipoAtivo
+			`${enviroment.endpoint}${this.pathSetor}/${setor.id}`,
+			setor
 		);
 	}
 }

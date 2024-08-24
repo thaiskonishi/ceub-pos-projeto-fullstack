@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AtivoDto, AtivoService } from '../../../services/ativo.service';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-ativo-consulta',
@@ -15,17 +16,20 @@ import {MatButtonModule} from '@angular/material/button';
 export class AtivoConsultaComponent implements OnInit {
 	ativos: AtivoDto[] = [];
 	displayedColumns: string[] = ['ID', 'NOME', 'TICKER', 'DATA DE FUNDAÇÃO','SETOR','TIPO DE ATIVO'];
-	constructor(private ativoService: AtivoService) {}
+	constructor(private ativoService: AtivoService, private router: Router) {}
 
 	ngOnInit(): void {
-		this.loadAtivos();
+		this.carregaAtivos();
 	}
 
-	loadAtivos(): void {
-		this.ativoService.getAtivos().subscribe({
+	carregaAtivos(): void {
+		this.ativoService.listaAtivos().subscribe({
 			next: (data) => (this.ativos = data),
 			error: (err) => console.error('Erro ao carregar ativos', err),
 		});
 	}
 
+	editarAtivo(id: number): void {
+		this.router.navigate(['/ativos/detalhes', id]);
+	}
 }

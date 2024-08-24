@@ -14,6 +14,8 @@ import lombok.Setter;
 public class AtivoDto {
 
     private Integer id;
+    private Integer idSetor;
+    private Integer idTipoAtivo;
     private String nome;
     private String ticker;
     private Date dataFundacao;
@@ -22,6 +24,8 @@ public class AtivoDto {
 
     public AtivoDto(Ativo ativo, String setor, String tipoAtivo) {
         this.id = ativo.getId();
+        this.idSetor = ativo.getIdSetor();
+        this.idTipoAtivo = ativo.getIdTipoAtivo();
         this.nome = ativo.getNome();
         this.ticker = ativo.getTicker();
         this.dataFundacao = ativo.getDataFundacao();
