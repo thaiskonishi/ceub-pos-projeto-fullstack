@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit ,ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AtivoDto, AtivoService } from '../../../services/ativo.service';
-import {MatTable, MatTableModule} from '@angular/material/table';
+import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
