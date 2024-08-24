@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { AtivoDto, AtivoService } from '../../../services/ativo.service';
+import {MatTable, MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-ativo-consulta',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, MatButtonModule,MatTableModule],
 	templateUrl: './ativo-consulta.component.html',
 	styleUrl: './ativo-consulta.component.scss',
 })
+
 export class AtivoConsultaComponent implements OnInit {
 	ativos: AtivoDto[] = [];
-
+	displayedColumns: string[] = ['ID', 'NOME', 'TICKER', 'DATA DE FUNDAÇÃO','SETOR','TIPO DE ATIVO'];
 	constructor(private ativoService: AtivoService) {}
 
 	ngOnInit(): void {
@@ -24,4 +27,5 @@ export class AtivoConsultaComponent implements OnInit {
 			error: (err) => console.error('Erro ao carregar ativos', err),
 		});
 	}
+
 }

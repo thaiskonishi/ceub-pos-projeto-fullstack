@@ -1,0 +1,38 @@
+.demo-table {
+  width: min-content;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.mat-column-ID {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-NOME {
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.mat-column-TICKER {
+  font-style: italic;
+}
+
+#dataFundacao {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mat-column-SETOR {
+  padding-left: 16px;
+  font-size: 16px;
+}
+
+#tipoAtivo {
+  width: fit-content;
+  text-align: center;
+  font-weight: bold;
+}
