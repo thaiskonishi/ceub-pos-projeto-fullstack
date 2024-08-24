@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { enviroment } from '../enviroment';
 
-const ativoPath = '/ativo/lista';
-
 export interface AtivoDto {
 	id: number;
+	idSetor: number;
+	idTipoAtivo: number;
 	nome: string;
 	ticker: string;
-	dataFundacao: Date;
+	dataFundacao: string;
 	setor: string;
 	tipoAtivo: string;
 }
@@ -18,11 +18,32 @@ export interface AtivoDto {
 	providedIn: 'root',
 })
 export class AtivoService {
-	private apiUrl = `${enviroment.endpoint}${ativoPath}`;
+	private ativoPath = '/ativo';
+
+	private apiUrl = `${enviroment.endpoint}${this.ativoPath}`;
 
 	constructor(private http: HttpClient) {}
 
-	getAtivos(): Observable<AtivoDto[]> {
-		return this.http.get<AtivoDto[]>(this.apiUrl);
+	listaAtivos(): Observable<AtivoDto[]> {
+		return this.http.get<AtivoDto[]>(`${this.apiUrl}/lista`);
+	}
+
+	recuperaAtivo(id: number): Observable<AtivoDto> {
+		return this.http.get<AtivoDto>(`${this.apiUrl}/detalhes/${id}`);
+	}
+
+	salvarAtivo(cotacao: AtivoDto): Observable<AtivoDto> {
+		return this.http.post<AtivoDto>(`${this.apiUrl}`, cotacao);
+	}
+
+	deletarAtivo(id: number): Observable<void> {
+		return this.http.delete<void>(`${this.apiUrl}/${id}`);
+	}
+
+	atualizarAtivo(cotacao: AtivoDto): Observable<AtivoDto> {
+		return this.http.put<AtivoDto>(
+			`${this.apiUrl}/${cotacao.id}`,
+			cotacao
+		);
 	}
 }

@@ -72,6 +72,8 @@ public class AtivoService {
         AtivoDto ativoDto = new AtivoDto();
 
         ativoDto.setId(ativo.getId());
+        ativoDto.setIdSetor(ativo.getIdSetor());
+        ativoDto.setIdTipoAtivo(ativo.getIdTipoAtivo());
         ativoDto.setNome(ativo.getNome());
         ativoDto.setTicker(ativo.getTicker());
         ativoDto.setDataFundacao(ativo.getDataFundacao());

@@ -1,28 +1,31 @@
 <div *ngIf="ativos.length > 0; else noData">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Ticker</th>
-          <th>Data de Fundação</th>
-          <th>Setor</th>
-          <th>Tipo de Ativo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ativo of ativos">
-          <td>{{ ativo.id }}</td>
-          <td>{{ ativo.nome }}</td>
-          <td>{{ ativo.ticker }}</td>
-          <td>{{ ativo.dataFundacao | date: 'dd/MM/yyyy' }}</td>
-          <td>{{ ativo.setor }}</td>
-          <td>{{ ativo.tipoAtivo }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #noData>
-    <p>Nenhum ativo disponível.</p>
-  </ng-template>
-  
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Ticker</th>
+				<th>Data de Fundação</th>
+				<th>Setor</th>
+				<th>Tipo de Ativo</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let ativo of ativos">
+				<td>{{ ativo.id }}</td>
+				<td>{{ ativo.nome }}</td>
+				<td>{{ ativo.ticker }}</td>
+				<td>{{ ativo.dataFundacao | date : 'dd/MM/yyyy' }}</td>
+				<td>{{ ativo.setor }}</td>
+				<td>{{ ativo.tipoAtivo }}</td>
+				<td>
+					<button (click)="editarAtivo(ativo.id)">Editar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ng-template #noData>
+	<p>Nenhum ativo disponível.</p>
+</ng-template>

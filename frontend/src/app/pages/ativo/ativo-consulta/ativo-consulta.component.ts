@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AtivoDto, AtivoService } from '../../../services/ativo.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-ativo-consulta',
@@ -12,16 +13,20 @@ import { AtivoDto, AtivoService } from '../../../services/ativo.service';
 export class AtivoConsultaComponent implements OnInit {
 	ativos: AtivoDto[] = [];
 
-	constructor(private ativoService: AtivoService) {}
+	constructor(private ativoService: AtivoService, private router: Router) {}
 
 	ngOnInit(): void {
-		this.loadAtivos();
+		this.carregaAtivos();
 	}
 
-	loadAtivos(): void {
-		this.ativoService.getAtivos().subscribe({
+	carregaAtivos(): void {
+		this.ativoService.listaAtivos().subscribe({
 			next: (data) => (this.ativos = data),
 			error: (err) => console.error('Erro ao carregar ativos', err),
 		});
+	}
+
+	editarAtivo(id: number): void {
+		this.router.navigate(['/ativos/detalhes', id]);
 	}
 }
