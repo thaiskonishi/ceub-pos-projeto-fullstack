@@ -13,11 +13,16 @@ import { Router } from '@angular/router';
 export class SetorConsultaComponent implements OnInit {
 	setores: SetorDto[] = [];
 
-	constructor(private setorService: SetorService, private router: Router ) {}
+	constructor(private setorService: SetorService, private router: Router) {}
 
 	ngOnInit(): void {
-		this.setorService.listarSetores().subscribe((data: SetorDto[]) => {
-			this.setores = data;
+		this.carregaSetores();
+	}
+
+	carregaSetores() {
+		this.setorService.listarSetores().subscribe({
+			next: (data) => (this.setores = data),
+			error: (err) => console.error('Erro ao carregar setores', err),
 		});
 	}
 

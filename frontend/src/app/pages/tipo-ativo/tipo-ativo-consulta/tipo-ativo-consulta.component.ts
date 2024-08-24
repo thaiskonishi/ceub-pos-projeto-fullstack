@@ -16,11 +16,19 @@ import { Router } from '@angular/router';
 export class TipoAtivoConsultaComponent implements OnInit {
 	tiposAtivo: TipoAtivoDto[] = [];
 
-	constructor(private tipoAtivoService: TipoAtivoService, private router: Router) {}
+	constructor(
+		private tipoAtivoService: TipoAtivoService,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
-		this.tipoAtivoService.listarTiposAtivo().subscribe((data) => {
-			this.tiposAtivo = data;
+		this.carregaTiposAtivo();
+	}
+
+	private carregaTiposAtivo() {
+		this.tipoAtivoService.listarTiposAtivo().subscribe({
+			next: (data) => (this.tiposAtivo = data),
+			error: (err) => console.error('Erro ao carregar cotações', err),
 		});
 	}
 

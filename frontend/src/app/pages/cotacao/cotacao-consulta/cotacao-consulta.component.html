@@ -1,24 +1,27 @@
 <div *ngIf="cotacoes.length > 0; else noData">
 	<table>
-	  <thead>
-		<tr>
-		  <th>ID</th>
-		  <th>Ticker</th>
-		  <th>Data</th>
-		  <th>Cotação</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<tr *ngFor="let cotacao of cotacoes">
-		  <td>{{ cotacao.id }}</td>
-		  <td>{{ cotacao.ticker }}</td>
-		  <td>{{ cotacao.data | date: 'dd/MM/yyyy HH:mm' }}</td>
-		  <td>{{ cotacao.cotacao | currency }}</td>
-		</tr>
-	  </tbody>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Ticker</th>
+				<th>Data</th>
+				<th>Cotação</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cotacao of cotacoes">
+				<td>{{ cotacao.id }}</td>
+				<td>{{ cotacao.ticker }}</td>
+				<td>{{ cotacao.data | date : "dd/MM/yyyy HH:mm" }}</td>
+				<td>{{ cotacao.cotacao | currency }}</td>
+				<td>
+					<button (click)="editarCotacao(cotacao.id)">Editar</button>
+				</td>
+			</tr>
+		</tbody>
 	</table>
-  </div>
-  <ng-template #noData>
+</div>
+<ng-template #noData>
 	<p>Nenhuma cotação disponível.</p>
-  </ng-template>
-  
+</ng-template>
