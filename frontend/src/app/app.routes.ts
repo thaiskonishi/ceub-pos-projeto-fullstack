@@ -36,7 +36,10 @@ export const routes: Routes = [
 	{ path: 'cotacoes/detalhes/:id', component: CotacaoDetalheComponent },
 	{ path: 'cotacoes/novo', component: CotacaoDetalheComponent},
 	{ path: 'ativos', component: AtivoConsultaComponent },
+
 	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent },
-	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent }, 
+	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent },
 	{ path: 'tipos-ativo/novo', component: TipoAtivoDetalheComponent },
+
+	{ path: '\*\*', component: CotacaoConsultaComponent },
 ];

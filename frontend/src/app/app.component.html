@@ -1,5 +1,12 @@
+<h3 id="titulo-inicial">Sistema de Investimentos</h3>
 
-<router-outlet>
-
-</router-outlet>
+<button mat-button [matMenuTriggerFor]="belowMenu" id="menu">Menu</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <button mat-menu-item routerLink="/cotacoes" routerLinkActive="active" ariaCurrentWhenActive="page">Cotação</button>
+	<button mat-menu-item routerLink="/setores" routerLinkActive="active" ariaCurrentWhenActive="page" id="setor">Setor</button>
+  <button mat-menu-item routerLink="/ativos" routerLinkActive="active" ariaCurrentWhenActive="page" id="ativo">Ativo</button>
+	<button mat-menu-item routerLink="/tipo-ativo" routerLinkActive="active" ariaCurrentWhenActive="page" id="tipo-ativo">Tipo de Atipo</button>
+</mat-menu>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
 
