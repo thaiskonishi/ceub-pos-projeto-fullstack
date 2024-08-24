@@ -10,9 +10,9 @@
         <input id="descricao" [(ngModel)]="tipoAtivo.descricao" name="descricao" />
       </div>
       <div>
-        <button type="button" (click)="save()">Salvar</button>
-        <button type="button" *ngIf="isEditMode" (click)="delete()">Deletar</button>
-        <button type="button" (click)="cancel()">Cancelar</button>
+        <button type="button" (click)="salvar()">Salvar</button>
+        <button type="button" *ngIf="isEditMode" (click)="deletar()">Deletar</button>
+        <button type="button" (click)="cancelar()">Cancelar</button>
       </div>
     </form>
   </div>

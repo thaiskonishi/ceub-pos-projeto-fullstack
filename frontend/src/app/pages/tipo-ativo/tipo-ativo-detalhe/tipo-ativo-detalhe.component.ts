@@ -32,7 +32,7 @@ export class TipoAtivoDetalheComponent implements OnInit {
     }
   }
 
-  save(): void {
+  salvar(): void {
     if (this.isEditMode) {
       this.tipoAtivoService.atualizarTipoAtivo(this.tipoAtivo).subscribe({
         next: () => this.router.navigate(['/tipos-ativo']),
@@ -46,14 +46,14 @@ export class TipoAtivoDetalheComponent implements OnInit {
     }
   }
 
-  delete(): void {
+  deletar(): void {
     this.tipoAtivoService.deletarTipoAtivo(this.tipoAtivo.id).subscribe({
       next: () => this.router.navigate(['/tipos-ativo']),
       error: (err) => console.error('Erro ao deletar tipo de ativo', err)
     });
   }
 
-  cancel(): void {
+  cancelar(): void {
     this.router.navigate(['/tipos-ativo']);
   }
 }
