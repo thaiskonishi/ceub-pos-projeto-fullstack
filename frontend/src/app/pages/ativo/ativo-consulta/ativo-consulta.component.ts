@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class AtivoConsultaComponent implements OnInit {
 	ativos: AtivoDto[] = [];
-	displayedColumns: string[] = ['ID', 'NOME', 'TICKER', 'DATA DE FUNDAÇÃO','SETOR','TIPO DE ATIVO'];
+	displayedColumns: string[] = ['ID', 'NOME', 'TICKER', 'DATA DE FUNDAÇÃO','SETOR','TIPO DE ATIVO', 'EDITAR'];
 	constructor(private ativoService: AtivoService, private router: Router) {}
 
 	ngOnInit(): void {

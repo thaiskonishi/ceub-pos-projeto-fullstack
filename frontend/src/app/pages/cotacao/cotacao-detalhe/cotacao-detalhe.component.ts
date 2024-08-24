@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CotacaoDto, CotacaoService } from '../../../services/cotacao.service';
+import { AtivoDto, AtivoService } from '../../../services/ativo.service';
 
 @Component({
 	selector: 'app-cotacao-detalhe',
@@ -14,15 +15,22 @@ import { CotacaoDto, CotacaoService } from '../../../services/cotacao.service';
 export class CotacaoDetalheComponent implements OnInit {
 	cotacao: CotacaoDto = { id: 0, idAtivo: 0, ticker: '', data: '', cotacao: 0 };
 	isEditMode: boolean = false;
+	ativos: AtivoDto[] = [];
 
 	constructor(
 		private cotacaoService: CotacaoService,
+		private ativoService: AtivoService,
 		private route: ActivatedRoute,
 		private router: Router
 	) {}
 
 	ngOnInit(): void {
 		const id = this.route.snapshot.paramMap.get('id');
+
+		this.ativoService.listaAtivos().subscribe((data) => {
+			this.ativos = data;
+		});
+
 		if (id) {
 			this.isEditMode = true;
 			this.cotacaoService.recuperaCotacao(parseInt(id)).subscribe((data) => {

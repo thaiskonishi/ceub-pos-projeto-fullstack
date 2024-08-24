@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CotacaoDto, CotacaoService } from '../../../services/cotacao.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-cotacao-consulta',
 	standalone: true,
-	imports: [CommonModule,MatButtonModule,MatTableModule],
+	imports: [CommonModule,MatButtonModule,MatTableModule,RouterModule],
 	templateUrl: './cotacao-consulta.component.html',
 	styleUrl: './cotacao-consulta.component.scss',
 })
 export class CotacaoConsultaComponent implements OnInit {
-	displayedColumns: string[] = ['ID', 'TICKER', 'DATA','COTAÇÃO', 'EDITAR'];
+	displayedColumns: string[] = ['ID', 'TICKER', 'DATA','COTAÇÃO', 'EDITAR', 'HISTORICO'];
 	cotacoes: CotacaoDto[] = [];
 
 	constructor(private cotacaoService: CotacaoService, private router: Router) {}

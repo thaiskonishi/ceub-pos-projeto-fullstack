@@ -1,32 +1,42 @@
-
 <table mat-table [dataSource]="cotacoes" class="mat-elevation-z8 tabela">
-
 	<ng-container matColumnDef="ID" class="campo">
 		<th mat-header-cell *matHeaderCellDef>ID</th>
-		<td mat-cell *matCellDef="let element" >{{element.id}}</td>
+		<td mat-cell *matCellDef="let element">{{ element.id }}</td>
 	</ng-container>
 
 	<ng-container matColumnDef="TICKER" class="campo">
 		<th mat-header-cell *matHeaderCellDef>TICKER</th>
-		<td mat-cell *matCellDef="let element">{{element.ticker}}</td>
+		<td mat-cell *matCellDef="let element">{{ element.ticker }}</td>
 	</ng-container>
-
 
 	<ng-container matColumnDef="DATA" id="data" class="campo">
 		<th mat-header-cell *matHeaderCellDef>DATA</th>
-		<td mat-cell *matCellDef="let element">{{element.data | date : "dd/MM/yyyy HH:mm" }}</td>
+		<td mat-cell *matCellDef="let element">
+			{{ element.data | date : "dd/MM/yyyy HH:mm" }}
+		</td>
 	</ng-container>
 
 	<ng-container matColumnDef="COTAÇÃO" class="campo">
 		<th mat-header-cell *matHeaderCellDef id="cotacao">COTAÇÃO</th>
-		<td mat-cell *matCellDef="let element">{{element.cotacao | currency}}</td>
+		<td mat-cell *matCellDef="let element">{{ element.cotacao | currency }}</td>
 	</ng-container>
 
 	<ng-container matColumnDef="EDITAR" id="editar" class="campo">
 		<th mat-header-cell *matHeaderCellDef>EDIÇÃO</th>
-		<td mat-cell *matCellDef="let element"><button (click)="editarCotacao(element.id)">Editar</button></td>
+		<td mat-cell *matCellDef="let element">
+			<button (click)="editarCotacao(element.id)">Editar</button>
+		</td>
+	</ng-container>
+
+	<ng-container matColumnDef="HISTORICO">
+		<th mat-header-cell *matHeaderCellDef>HISTÓRICO</th>
+		<td mat-cell *matCellDef="let element">
+			<a [routerLink]="['/historico-cotacoes', element.idAtivo]" mat-button
+				>Ver Histórico</a
+			>
+		</td>
 	</ng-container>
 
 	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-	<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

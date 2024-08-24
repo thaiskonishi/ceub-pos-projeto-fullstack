@@ -2,8 +2,12 @@
   <h2>{{ isEditMode ? 'Editar Cotação' : 'Criar Nova Cotação' }}</h2>
   <form>
     <div>
-      <label for="ticker">Ticker:</label>
-      <input id="ticker" [(ngModel)]="cotacao.ticker" name="ticker" />
+      <label for="idAtivo">Ticker:</label>
+      <select id="idAtivo" [(ngModel)]="cotacao.idAtivo" name="idAtivo">
+        <option *ngFor="let ativo of ativos" [value]="ativo.id">
+          {{ ativo.ticker }}
+        </option>
+      </select>
     </div>
     <div>
       <label for="cotacao">Cotação:</label>
