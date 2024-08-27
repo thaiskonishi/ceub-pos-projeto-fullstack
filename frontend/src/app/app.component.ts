@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -12,5 +12,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
-	title = 'frontend';
+	constructor(public router: Router) {}
 }

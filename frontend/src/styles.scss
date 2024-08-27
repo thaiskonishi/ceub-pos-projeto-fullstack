@@ -1,8 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&family=Orbitron:wght@400;700&display=swap");
+@import "app/styles/dark.scss";
 
-body{
-	background-color:rgb(154, 177, 7);
+body {
+	background-color: $md-sys-color-background;
+	background-image: url('app/assets/Deus Ex.jpg');
+	background-position: -60%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: "Exo 2", sans-serif;
+	color: $md-sys-color-primary-fixed-dim;
+}
