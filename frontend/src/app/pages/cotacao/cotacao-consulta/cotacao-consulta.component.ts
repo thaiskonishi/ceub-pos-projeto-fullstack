@@ -32,4 +32,5 @@ export class CotacaoConsultaComponent implements OnInit {
 	editarCotacao(id: number): void {
 		this.router.navigate(['/cotacoes/detalhes', id]);
 	}
+
 }

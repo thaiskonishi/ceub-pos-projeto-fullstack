@@ -1,12 +1,43 @@
-#titulo-inicial{
+@import "styles/dark.scss";
+
+#titulo-inicial {
 	text-align: center;
 	margin-top: 1%;
 	font-size: 30px;
-	font-family: 'Orbitron', sans-serif;
+	font-family: "Orbitron", sans-serif;
 }
 
-#menu{
-	font-size: larger;
-	margin-bottom: 1%;
-	margin-left: 1%;
+#menu {
+	color: #ff8c00; // Tom alaranjado para o texto
+	font-weight: bold;
+	font-size: 1.2em;
+	font-family: "Orbitron", sans-serif;
+	background-color: transparent;
+	border: none;
+	margin-top: 5px;
+}
+
+#menu:hover {
+	background-color: #e67b01; // Tom mais claro ao passar o mouse
+	color: #fff; // Cor branca para melhor contraste ao hover
+}
+
+.mat-menu {
+	background-color: #333; // Mesma cor de fundo do layout principal
+	border: 1px solid #444; // Um tom mais claro para destacar
+}
+
+.menu-item {
+	color: #ff8c00; // Tom alaranjado para as opções do menu
+	font-weight: normal;
+}
+
+button[menu-item]:hover {
+	background-color: #555555; // Tom mais claro ao passar o mouse
+	color: #fff; // Cor branca para melhor contraste ao hover
+}
+
+button[mat-menu-item].active {
+	background-color: #444; // Cor de fundo para o item ativo
+	color: #ff8c00; // Mantém a cor alaranjada para o texto
 }

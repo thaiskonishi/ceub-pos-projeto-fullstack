@@ -1,116 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&family=Orbitron:wght@400;700&display=swap');
 @import "../../styles/dark.scss";
 
+
 .container-login {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+	background-position: 40%;
+	background-position-y: 210%;
+	background-image: url('../../assets/back-ground-3.jpg');
 }
 
 .container-login-central {
-	display: grid;
-	justify-content: center;
-	align-items: center;
-	width: 445px;
-	height: 460px;
-	background-color: $md-sys-color-surface-container-lowest;
-	border-radius:5%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 }
+
 .container-header {
-	.titulo-login {
-		font-style: normal;
-		font-family: 'Orbitron',
-			sans-serif;
-		font-weight: 700;
-		font-size: 34px;
-		text-align: center;
-		color: $md-sys-color-primary-fixed-dim;
-		height: 60px;
-	}
-	.info-login {
-		padding-top: 16px;
-		font-style: normal;
-		font-family: "Orbitron", sans-serif;
-		font-weight: 400;
-		font-size: 14px;
-		text-align: center;
-		color: $md-sys-color-primary-fixed;
-		height: 20px;
-	}
-
-	.container-form {
-		// flex-direction: column;
-		// flex-wrap: wrap;
-		display: flex;
-		justify-content: baseline;
-		align-items: baseline;
-		padding-left: 5%;
-		padding-right: 5%;
-		margin-left: 10%;
-		margin-right: 10%;
-	}
-
-}
-.group-input {
-	margin-left: 7%;
-	margin-right: 7%;;
-
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.group-input {
-	.text-info {
-		display: flex;
-		font-style: normal;
-		font-family: "Exo 2", sans-serif;
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 24px;
-		align-items: center;
-		color: $md-sys-color-inverse-primary;
-		padding-left: 5%;
-	}
-
+.titulo-login {
+    font-size: 24px;
+    color: #ff9933; /* Ajuste de cor para combinar com o tema */
+	font-family: "Orbitron", sans-serif;
 }
-.input-form {
-	display: flex;
+
+.info-login {
+    font-size: 14px;
+    color: #ffffff;
 	font-family: "Exo 2", sans-serif;
-	align-items: center;
-	padding: 10px 15px;
-	width: 90%;
-	padding-left: 5%;
-	margin: 5px 5px;
+}
 
-	border-radius: 5px;
+.container-form .group-input {
+    margin-bottom: 15px;
+	margin-right: 20px;
+}
+
+.container-form .group-button {
+    text-align: center; /* Centraliza o botão */
+    margin-top: 20px;
+}
+
+.text-info {
+    color: #ff9933; /* Ajuste de cor para combinar com o tema */
+    margin-bottom: 5px;
+    font-size: 14px;
+	font-family: "Exo 2", sans-serif;
+}
+
+.input-form {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ff9933;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 14px;
+	font-family: "Exo 2", sans-serif;
+}
+
+.input-form::placeholder {
+    color: #cccccc;
 }
 
 .btn-login {
-	margin-top: 10%;
-	margin-left: 10px;
-	display: flex;
+    width: 50%;
+    padding: 10px;
+    background-color: #ff9933;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 	font-family: "Exo 2", sans-serif;
-	align-items: center;
-	padding: 10px 25px;
-	width: 100%;
-	height: 62px;
-	border: 0px solid;
-	border-radius: 5px;
-	background: $md-sys-color-primary-fixed;
-	color: $md-sys-color-inverse-primary;
-	cursor: pointer;
 }
 
-.login-container {
-	width: 300px;
-	margin: 100px auto;
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  h2 {
-	text-align: center;
-	margin-bottom: 20px;
-  }
-
+.btn-login:hover {
+    background-color: #e68a00; /* Sombra mais escura no hover */
+}
