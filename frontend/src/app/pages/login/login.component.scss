@@ -86,12 +86,13 @@
 
 .btn-login {
 	margin-top: 10%;
+	margin-left: 10px;
 	display: flex;
 	font-family: "Exo 2", sans-serif;
 	align-items: center;
 	padding: 10px 25px;
 	width: 100%;
-	height: 72px;
+	height: 62px;
 	border: 0px solid;
 	border-radius: 5px;
 	background: $md-sys-color-primary-fixed;
@@ -107,13 +108,9 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   h2 {
 	text-align: center;
 	margin-bottom: 20px;
   }
-  
-  button {
-	width: 100%;
-  }
-  
+

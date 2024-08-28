@@ -1,0 +1,39 @@
+.tabela {
+	display: inline-table;
+  width: 30%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 5%;
+}
+
+.campo{
+	width: 15%;
+}
+
+.mat-column-ID {
+ // width: 	8%;
+  border-right: 1px solid currentColor;
+  padding-right: 1%;
+  text-align: center;
+}
+
+#nomeSetor {
+//	width: 	10%;
+  font-style: italic;
+
+}
+
+#descricao  {
+//	width: 15px;
+  text-align: center;
+  font-weight: normal;
+}
+
+
+#acoes{
+ // padding-right: 15%;
+  font-size: 16px;
+//	width: 20%;
+	text-align: left;
+
+}
