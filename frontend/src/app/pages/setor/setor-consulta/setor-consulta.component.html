@@ -1,25 +1,46 @@
+<h2>Registros de Setores</h2>
 <div *ngIf="setores.length > 0; else noData">
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome do Setor</th>
-				<th>Descrição</th>
-				<th>Ações</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let setor of setores">
-				<td>{{ setor.id }}</td>
-				<td>{{ setor.nomeSetor }}</td>
-				<td>{{ setor.descricao }}</td>
-				<td>
-					<button (click)="editarSetor(setor.id)">Editar</button>
+	<div class="container">
+		<button type="button" class="new-button" routerLink="/setores/novo">
+			Novo setor
+		</button>
+		<table mat-table [dataSource]="setores" class="mat-elevation-z8 tabela">
+			<ng-container matColumnDef="ID">
+				<th mat-header-cell *matHeaderCellDef>ID</th>
+				<td mat-cell *matCellDef="let setor">{{ setor.id }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="NOME">
+				<th mat-header-cell *matHeaderCellDef>SETOR</th>
+				<td mat-cell *matCellDef="let setor">{{ setor.nomeSetor }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="DESCRICAO">
+				<th mat-header-cell *matHeaderCellDef>DESCRIÇÃO</th>
+				<td mat-cell *matCellDef="let setor">{{ setor.descricao }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="EDITAR">
+				<th mat-header-cell *matHeaderCellDef>EDIÇÃO</th>
+				<td mat-cell *matCellDef="let setor">
+					<button mat-button color="primary" (click)="editarSetor(setor.id)">
+						Editar
+					</button>
 				</td>
-			</tr>
-		</tbody>
-	</table>
+			</ng-container>
+
+			<tr
+				mat-header-row
+				*matHeaderRowDef="['ID', 'NOME', 'DESCRICAO', 'EDITAR']"
+			></tr>
+			<tr
+				mat-row
+				*matRowDef="let row; columns: ['ID', 'NOME', 'DESCRICAO', 'EDITAR']"
+			></tr>
+		</table>
+	</div>
 </div>
+
 <ng-template #noData>
 	<p>Nenhum setor encontrado.</p>
 </ng-template>

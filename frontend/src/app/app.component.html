@@ -1,14 +1,50 @@
-<h3 id="titulo-inicial">Deus Ex Finance</h3>
+<!-- <h3 id="titulo-inicial">Deus Ex Finance</h3> -->
 
 <div *ngIf="router.url !== '/login'">
-<button mat-button [matMenuTriggerFor]="belowMenu" id="menu">Menu do Sistema</button>
-<mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item routerLink="/cotacoes" routerLinkActive="active" ariaCurrentWhenActive="page">Cotação</button>
-	<button mat-menu-item routerLink="/setores" routerLinkActive="active" ariaCurrentWhenActive="page" id="setor">Setor</button>
-  <button mat-menu-item routerLink="/ativos" routerLinkActive="active" ariaCurrentWhenActive="page" id="ativo">Ativo</button>
-	<button mat-menu-item routerLink="/tipo-ativo" routerLinkActive="active" ariaCurrentWhenActive="page" id="tipo-ativo">Tipo de Atipo</button>
-</mat-menu>
+	<button mat-button [matMenuTriggerFor]="belowMenu" id="menu">
+		Menu do Sistema
+	</button>
+	<mat-menu #belowMenu="matMenu" yPosition="below">
+		<button
+			mat-menu-item
+			routerLink="/cotacoes"
+			routerLinkActive="active"
+			ariaCurrentWhenActive="page"
+			class="menu-item"
+		>
+			Cotação
+		</button>
+		<button
+			mat-menu-item
+			routerLink="/setores"
+			routerLinkActive="active"
+			ariaCurrentWhenActive="page"
+			id="setor"
+			class="menu-item"
+		>
+			Setor
+		</button>
+		<button
+			mat-menu-item
+			routerLink="/ativos"
+			routerLinkActive="active"
+			ariaCurrentWhenActive="page"
+			id="ativo"
+			class="menu-item"
+		>
+			Ativo
+		</button>
+		<button
+			mat-menu-item
+			routerLink="/tipo-ativo"
+			routerLinkActive="active"
+			ariaCurrentWhenActive="page"
+			id="tipo-ativo"
+			class="menu-item"
+		>
+			Tipo de Atipo
+		</button>
+	</mat-menu>
 </div>
 <!-- The routed views render in the <router-outlet>-->
 <router-outlet></router-outlet>
-
