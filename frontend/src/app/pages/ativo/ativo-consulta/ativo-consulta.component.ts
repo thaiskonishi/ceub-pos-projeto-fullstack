@@ -1,21 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AtivoDto, AtivoService } from '../../../services/ativo.service';
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import { Router } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
 	selector: 'app-ativo-consulta',
 	standalone: true,
-	imports: [CommonModule, MatButtonModule,MatTableModule],
+	imports: [CommonModule, MatButtonModule, MatTableModule, RouterModule],
 	templateUrl: './ativo-consulta.component.html',
 	styleUrl: './ativo-consulta.component.scss',
 })
-
 export class AtivoConsultaComponent implements OnInit {
 	ativos: AtivoDto[] = [];
-	displayedColumns: string[] = ['ID', 'NOME', 'TICKER', 'DATA DE FUNDAÇÃO','SETOR','TIPO DE ATIVO', 'EDITAR'];
+	displayedColumns: string[] = [
+		'ID',
+		'NOME',
+		'TICKER',
+		'DATA DE FUNDAÇÃO',
+		'SETOR',
+		'TIPO DE ATIVO',
+		'EDITAR',
+	];
+
 	constructor(private ativoService: AtivoService, private router: Router) {}
 
 	ngOnInit(): void {

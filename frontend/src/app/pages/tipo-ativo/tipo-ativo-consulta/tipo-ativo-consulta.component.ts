@@ -4,16 +4,19 @@ import {
 	TipoAtivoService,
 } from '../../../services/tipo-ativo.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
 	selector: 'app-tipo-ativo-consulta',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, MatButtonModule, MatTableModule, RouterModule],
 	templateUrl: './tipo-ativo-consulta.component.html',
 	styleUrl: './tipo-ativo-consulta.component.scss',
 })
 export class TipoAtivoConsultaComponent implements OnInit {
+	displayedColumns: string[] = ['ID', 'NOME', 'DESCRICAO', 'EDITAR'];
 	tiposAtivo: TipoAtivoDto[] = [];
 
 	constructor(

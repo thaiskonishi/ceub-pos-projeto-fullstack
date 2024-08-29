@@ -1,46 +1,54 @@
+<h2>Registros de Ativo</h2>
+<div *ngIf="ativos.length > 0; else noData">
+  <div class="container">
+    <button type="button" class="new-button" routerLink="/ativos/novo">
+      Novo ativo
+    </button>
+    <table mat-table [dataSource]="ativos" class="mat-elevation-z8 tabela">
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
-	<table mat-table [dataSource]="ativos" class="mat-elevation-z8 tabela">
+      <ng-container matColumnDef="NOME">
+        <th mat-header-cell *matHeaderCellDef>NOME</th>
+        <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+      </ng-container>
 
-		<ng-container matColumnDef="ID" class="campo">
-			<th mat-header-cell *matHeaderCellDef>ID</th>
-			<td mat-cell *matCellDef="let element" >{{element.id}}</td>
-		</ng-container>
+      <ng-container matColumnDef="TICKER">
+        <th mat-header-cell *matHeaderCellDef>TICKER</th>
+        <td mat-cell *matCellDef="let element">{{ element.ticker }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="DATA_FUNDACAO">
+        <th mat-header-cell *matHeaderCellDef>DATA DE FUNDAÇÃO</th>
+        <td mat-cell *matCellDef="let element">{{ element.dataFundacao | date : 'dd/MM/yyyy' }}</td>
+      </ng-container>
 
-		<ng-container matColumnDef="NOME" class="campo">
-			<th mat-header-cell *matHeaderCellDef>NOME</th>
-			<td mat-cell *matCellDef="let element">{{element.nome}}</td>
-		</ng-container>
+      <ng-container matColumnDef="SETOR">
+        <th mat-header-cell *matHeaderCellDef>SETOR</th>
+        <td mat-cell *matCellDef="let element">{{ element.setor }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="TIPO_ATIVO">
+        <th mat-header-cell *matHeaderCellDef>TIPO DE ATIVO</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoAtivo }}</td>
+      </ng-container>
 
-		<ng-container matColumnDef="TICKER" class="campo">
-			<th mat-header-cell *matHeaderCellDef>TICKER</th>
-			<td mat-cell *matCellDef="let element">{{element.ticker}}</td>
-		</ng-container>
+      <ng-container matColumnDef="EDITAR">
+        <th mat-header-cell *matHeaderCellDef>EDIÇÃO</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="primary" (click)="editarAtivo(element.id)">
+            Editar
+          </button>
+        </td>
+      </ng-container>
 
-
-		<ng-container matColumnDef="DATA DE FUNDAÇÃO" id="dataFundacao" class="campo">
-			<th mat-header-cell *matHeaderCellDef>DATA DE FUNDAÇÃO</th>
-			<td mat-cell *matCellDef="let element">{{element.dataFundacao}}</td>
-		</ng-container>
-
-		<ng-container matColumnDef="SETOR" class="campo">
-			<th mat-header-cell *matHeaderCellDef>SETOR</th>
-			<td mat-cell *matCellDef="let element">{{element.setor}}</td>
-		</ng-container>
-
-		<ng-container matColumnDef="TIPO DE ATIVO" id="tipoAtivo" class="campo">
-			<th mat-header-cell *matHeaderCellDef>TIPO DE ATIVO</th>
-			<td mat-cell *matCellDef="let element">{{element.tipoAtivo}}</td>
-		</ng-container>
-
-		<ng-container matColumnDef="EDITAR" id="editar" class="campo">
-			<th mat-header-cell *matHeaderCellDef>EDIÇÃO</th>
-			<td mat-cell *matCellDef="let element"><button (click)="editarAtivo(element.id)">Editar</button></td>
-		</ng-container>
-
-		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-	</table>
-
-
+      <tr mat-header-row *matHeaderRowDef="['ID', 'NOME', 'TICKER', 'DATA_FUNDACAO', 'SETOR', 'TIPO_ATIVO', 'EDITAR']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['ID', 'NOME', 'TICKER', 'DATA_FUNDACAO', 'SETOR', 'TIPO_ATIVO', 'EDITAR']"></tr>
+    </table>
+  </div>
+</div>
+<ng-template #noData>
+  <p>Nenhum ativo encontrado.</p>
+</ng-template>

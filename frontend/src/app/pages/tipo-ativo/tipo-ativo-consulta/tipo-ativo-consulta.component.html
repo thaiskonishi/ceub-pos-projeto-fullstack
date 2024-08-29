@@ -1,25 +1,52 @@
+<h2>Registros de Tipos de Ativo</h2>
 <div *ngIf="tiposAtivo.length > 0; else noData">
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Descrição</th>
-				<th>Ações</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let tipoAtivo of tiposAtivo">
-				<td>{{ tipoAtivo.id }}</td>
-				<td>{{ tipoAtivo.nomeTipoAtivo }}</td>
-				<td>{{ tipoAtivo.descricao }}</td>
-				<td>
-					<button (click)="editarTipoAtivo(tipoAtivo.id)">Editar</button> 
+	<div class="container">
+		<button type="button" class="new-button" routerLink="/tipos-ativo/novo">
+			Novo tipo de ativo
+		</button>
+		<table mat-table [dataSource]="tiposAtivo" class="mat-elevation-z8 tabela">
+			<ng-container matColumnDef="ID">
+				<th mat-header-cell *matHeaderCellDef>ID</th>
+				<td mat-cell *matCellDef="let tipoAtivo">{{ tipoAtivo.id }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="NOME">
+				<th mat-header-cell *matHeaderCellDef>NOME</th>
+				<td mat-cell *matCellDef="let tipoAtivo">
+					{{ tipoAtivo.nomeTipoAtivo }}
 				</td>
-			</tr>
-		</tbody>
-	</table>
+			</ng-container>
+
+			<ng-container matColumnDef="DESCRICAO">
+				<th mat-header-cell *matHeaderCellDef>DESCRIÇÃO</th>
+				<td mat-cell *matCellDef="let tipoAtivo">{{ tipoAtivo.descricao }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="EDITAR">
+				<th mat-header-cell *matHeaderCellDef>EDIÇÃO</th>
+				<td mat-cell *matCellDef="let tipoAtivo">
+					<button
+						mat-button
+						color="primary"
+						(click)="editarTipoAtivo(tipoAtivo.id)"
+					>
+						Editar
+					</button>
+				</td>
+			</ng-container>
+
+			<tr
+				mat-header-row
+				*matHeaderRowDef="['ID', 'NOME', 'DESCRICAO', 'EDITAR']"
+			></tr>
+			<tr
+				mat-row
+				*matRowDef="let row; columns: ['ID', 'NOME', 'DESCRICAO', 'EDITAR']"
+			></tr>
+		</table>
+	</div>
 </div>
+
 <ng-template #noData>
 	<p>Nenhum tipo de ativo encontrado.</p>
 </ng-template>

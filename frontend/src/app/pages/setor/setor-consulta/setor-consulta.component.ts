@@ -8,7 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 @Component({
 	selector: 'app-setor-consulta',
 	standalone: true,
-	imports: [CommonModule,MatButtonModule,MatTableModule,RouterModule],
+	imports: [CommonModule, MatButtonModule, MatTableModule, RouterModule],
 	templateUrl: './setor-consulta.component.html',
 	styleUrl: './setor-consulta.component.scss',
 })
