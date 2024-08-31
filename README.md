@@ -98,7 +98,7 @@ Este projeto é uma aplicação full-stack para controle de investimentos, desen
 
 ## Credenciais de acesso
 
-- Login: admin@sempreceub.com.br
+- Login: admin@sempreceub.com
 - Senha: 12345678
 
 ## Documentação da API
