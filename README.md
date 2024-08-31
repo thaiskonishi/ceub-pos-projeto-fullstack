@@ -106,15 +106,15 @@ Este projeto é apenas um protótipo e pode ser expandido para incluir mais func
 
 ---
 
-**Autor**: Thaís Maldonado Konishi
-**Autor**: Vinícius de Sousa Santana
-**Licença**: MIT  
+- **Autor**: Thaís Maldonado Konishi
+- **Autor**: Vinícius de Sousa Santana
+- **Licença**: MIT  
 
 # ceub-pos-projeto-fullstack
 
-referências:
+- **Referências:**
 
-https://quarkus.io/guides/
-https://material.angular.io/components/table/examples
-https://material.angular.io/guide/theming
-https://angular.dev/overview
+- https://quarkus.io/guides/
+- https://material.angular.io/components/table/examples
+- https://material.angular.io/guide/theming
+- https://angular.dev/overview
