@@ -96,6 +96,11 @@ Este projeto é uma aplicação full-stack para controle de investimentos, desen
     npm test
     ```
 
+## Credenciais de acesso
+
+- Login: admin@sempreceub.com.br
+- Senha: 12345678
+
 ## Documentação da API
 
 Após iniciar o servidor Quarkus, a documentação da API estará disponível em `http://localhost:8080/api-docs`.
