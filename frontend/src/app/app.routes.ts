@@ -9,6 +9,7 @@ import { TipoAtivoDetalheComponent } from './pages/tipo-ativo/tipo-ativo-detalhe
 import { SetorDetalheComponent } from './pages/setor/setor-detalhe/setor-detalhe.component';
 import { CotacaoDetalheComponent } from './pages/cotacao/cotacao-detalhe/cotacao-detalhe.component';
 import { AtivoDetalheComponent } from './pages/ativo/ativo-detalhe/ativo-detalhe.component';
+import { AuthGuard } from './pages/login/auth-guard';
 
 export const routes: Routes = [
 	{
@@ -25,23 +26,23 @@ export const routes: Routes = [
 		path: '',
 		component: LoginComponent,
 	},
-	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent },
-	{ path: 'setores', component: SetorConsultaComponent },
-	{ path: 'setores/detalhes/:id', component: SetorDetalheComponent },
-	{ path: 'setores/novo', component: SetorDetalheComponent},
+	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent, canActivate: [AuthGuard]  },
+	{ path: 'setores', component: SetorConsultaComponent, canActivate: [AuthGuard]  },
+	{ path: 'setores/detalhes/:id', component: SetorDetalheComponent, canActivate: [AuthGuard]  },
+	{ path: 'setores/novo', component: SetorDetalheComponent, canActivate: [AuthGuard] },
 	{
 		path: 'historico-cotacoes/:id',
-		component: HistoricoCotacaoConsultaComponent,
+		component: HistoricoCotacaoConsultaComponent, canActivate: [AuthGuard]  
 	},
-	{ path: 'cotacoes', component: CotacaoConsultaComponent },
-	{ path: 'cotacoes/detalhes/:id', component: CotacaoDetalheComponent },
-	{ path: 'cotacoes/novo', component: CotacaoDetalheComponent},
-	{ path: 'ativos', component: AtivoConsultaComponent },
-	{ path: 'ativos/detalhes/:id', component: AtivoDetalheComponent },
-	{ path: 'ativos/novo', component: AtivoDetalheComponent},
-	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent },
-	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent },
-	{ path: 'tipos-ativo/novo', component: TipoAtivoDetalheComponent },
+	{ path: 'cotacoes', component: CotacaoConsultaComponent, canActivate: [AuthGuard]  },
+	{ path: 'cotacoes/detalhes/:id', component: CotacaoDetalheComponent, canActivate: [AuthGuard]  },
+	{ path: 'cotacoes/novo', component: CotacaoDetalheComponent, canActivate: [AuthGuard] },
+	{ path: 'ativos', component: AtivoConsultaComponent, canActivate: [AuthGuard]  },
+	{ path: 'ativos/detalhes/:id', component: AtivoDetalheComponent, canActivate: [AuthGuard]  },
+	{ path: 'ativos/novo', component: AtivoDetalheComponent, canActivate: [AuthGuard] },
+	{ path: 'tipos-ativo', component: TipoAtivoConsultaComponent, canActivate: [AuthGuard]  },
+	{ path: 'tipos-ativo/detalhes/:id', component: TipoAtivoDetalheComponent, canActivate: [AuthGuard]  },
+	{ path: 'tipos-ativo/novo', component: TipoAtivoDetalheComponent, canActivate: [AuthGuard]  },
 
-	{ path: '\*\*', component: CotacaoConsultaComponent },
+	{ path: '\*\*', component: CotacaoConsultaComponent, canActivate: [AuthGuard] },
 ];

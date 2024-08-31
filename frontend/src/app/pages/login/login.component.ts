@@ -1,6 +1,7 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
 	selector: 'app-login',
@@ -10,18 +11,20 @@ import { Router } from '@angular/router';
 	styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-	email:string ='';
-	senha:string='';
+	email: string = '';
+	senha: string = '';
 
-	constructor(private router: Router) {}
+	constructor(private router: Router, private authService: AuthService) {}
 
-validarLogin(email: string,senha:string ) : void{
-if(email==='email@gmail.com' && senha==='12345678'){
-	this.router.navigate(['/cotacoes']);
+	validarLogin(email: string, senha: string): void {
+		const credenciais = { login: email, password: senha };
 
-}else{
-	alert('Credenciais inválidas');}
+		this.authService.login(credenciais).subscribe((isLoggedIn) => {
+			if (isLoggedIn) {
+				this.router.navigate(['/cotacoes']);
+			} else {
+				alert('Credenciais inválidas');
+			}
+		});
+	}
 }
-
-}
-

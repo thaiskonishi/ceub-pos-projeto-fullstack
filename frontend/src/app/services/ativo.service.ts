@@ -32,18 +32,18 @@ export class AtivoService {
 		return this.http.get<AtivoDto>(`${this.apiUrl}/detalhes/${id}`);
 	}
 
-	salvarAtivo(cotacao: AtivoDto): Observable<AtivoDto> {
-		return this.http.post<AtivoDto>(`${this.apiUrl}`, cotacao);
+	salvarAtivo(ativo: AtivoDto): Observable<AtivoDto> {
+		return this.http.post<AtivoDto>(`${this.apiUrl}`, ativo);
 	}
 
 	deletarAtivo(id: number): Observable<void> {
 		return this.http.delete<void>(`${this.apiUrl}/${id}`);
 	}
 
-	atualizarAtivo(cotacao: AtivoDto): Observable<AtivoDto> {
+	atualizarAtivo(ativo: AtivoDto): Observable<AtivoDto> {
 		return this.http.put<AtivoDto>(
-			`${this.apiUrl}/${cotacao.id}`,
-			cotacao
+			`${this.apiUrl}/${ativo.id}`,
+			ativo
 		);
 	}
 }
